@@ -1,71 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Events & Newsletter - Run4Ricky Foundation</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run4Ricky Foundation - Events & Newsletter</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <img src="https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/3129/live/7f9d9e90-2399-11f0-8c2e-77498b1ce297.jpg" alt="Run4Ricky Logo" />
+    <img src="images/logo.png" alt="Run4Ricky Foundation Logo">
     <h1>Run4Ricky Foundation</h1>
-    <p>Empowering lives through awareness, support, and inclusion.</p>
+    <p>Stay Involved</p>
   </header>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="story.html">Story</a>
     <a href="media.html">Media</a>
-    <a href="events-newsletter.html" class="active">Events & Newsletter</a>
-    <a href="donate.html"> Donate</a>
+    <a href="events-newsletter.html" aria-current="page">Events & Newsletter</a>
+    <a href="donate.html">Donate</a>
   </nav>
 
   <main>
     <section>
       <h2>Upcoming Events</h2>
       <ul class="events-list">
-        <li><strong>June 15, 2025</strong> – 5K Awareness Run at Central Park</li>
-        <li><strong>August 10, 2025</strong> – Inclusion Workshop for Families</li>
-        <li><strong>October 5, 2025</strong> – Annual Run4Ricky Celebration & Fundraiser</li>
+        <li><strong>June 12, 2025:</strong> Spring Fun Run at Parco delle Cascine, Florence.</li>
+        <li><strong>August 8, 2025:</strong> Charity Gala Dinner in Milan.</li>
+        <li><strong>October 5, 2025:</strong> International Awareness Walk, Rome.</li>
       </ul>
     </section>
 
     <section>
-      <h2>Stay Connected</h2>
-      <p>Sign up to receive our newsletter and get updates on upcoming events, initiatives, and volunteer opportunities.</p>
-      <form onsubmit="event.preventDefault(); alert('Thank you for subscribing!');" aria-label="Newsletter Subscription Form">
-        <label for="newsletter-email" style="display: none;">Email address</label>
-        <input type="email" id="newsletter-email" placeholder="Your email address" required />
+      <h2>Newsletter Signup</h2>
+      <form action="https://mailchimp.com/subscribe/run4ricky" method="POST">
+        <label for="email" class="sr-only">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
         <button type="submit">Subscribe</button>
       </form>
     </section>
   </main>
 
   <footer>
-    <section>
-      <h2>Contact Us</h2>
-      <p>If you have questions, suggestions, or would like to connect with us, please reach out:</p>
-      <p><strong>Email:</strong> <a href="mailto:rbarbieri99@gmail.com">rbarbieri99@gmail.com</a></p>
-
-      <div class="social-icons" aria-label="Follow us on social media">
-        <a href="https://facebook.com/Run4Ricky" target="_blank" aria-label="Facebook">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" />
-        </a>
-        <a href="https://instagram.com/Run4Ricky" target="_blank" aria-label="Instagram">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" />
-        </a>
-        <a href="https://twitter.com/Run4Ricky" target="_blank" aria-label="Twitter">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" />
-        </a>
-        <a href="https://youtube.com/@Run4Ricky" target="_blank" aria-label="YouTube">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" />
-        </a>
-      </div>
-
-      <p><a href="https://paypal.me/rickybarb/10" target="_blank" class="button">Donate via PayPal</a></p>
-      <p>&copy; 2025 Run4Ricky Foundation. All rights reserved.</p>
-    </section>
+    <p>&copy; 2025 Run4Ricky Foundation</p>
   </footer>
 </body>
 </html>
-
