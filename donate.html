@@ -2,48 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Donate - Run4Ricky Foundation</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <img src="https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/3129/live/7f9d9e90-2399-11f0-8c2e-77498b1ce297.jpg" alt="Run4Ricky Logo" />
+    <img src="https://ichef.bbci.co.uk/ace/standard/1600/cpsprod...f9d9e90-2399-11f0-8c2e-77498b1ce297.jpg" alt="Run4Ricky Logo" />
     <h1>Run4Ricky Foundation</h1>
     <p>Empowering lives through awareness, support, and inclusion.</p>
   </header>
 
   <nav>
     <a href="index.html">Home</a>
-    <a href="story.html">Story</a>
+    <a href="events-newsletter.html">Events &amp; Newsletter</a>
     <a href="media.html">Media</a>
+    <a href="story.html">Stories</a>
     <a href="testimonials.html">Testimonials</a>
-    <a href="events-newsletter.html">Events & Newsletter</a>
-    <a href="donate.html" class="active">Donate</a>
+    <a href="donate.html" class="active" aria-current="page">Donate</a>
   </nav>
 
-  <main>
-    <section class="donation-box">
-      <h2>Support the Run4Ricky Foundation</h2>
-      <p>Every donation helps us organize inclusive events, fund outreach programs, and promote community wellness. No amount is too small—your support fuels our mission.</p>
-      
-      <a class="button" href="https://paypal.me/rickybarb/10" target="_blank" rel="noopener">Donate via PayPal</a>
+  <!-- 1. Hero Impact Banner -->
+  <section class="hero-donate">
+    <div class="hero-overlay">
+      <h1>Help Us Reach $50,000 by July 1st</h1>
+      <p>Your gift powers awareness events &amp; community outreach.</p>
+      <a href="#donation-form" class="button">Give Now</a>
+    </div>
+  </section>
 
-      <p class="recurring-note">Consider setting up a recurring monthly donation to help sustain our efforts year-round.</p>
+  <main>
+    <!-- 2. Progress Bar & Goal Tracker -->
+    <div class="goal-tracker">
+      <label for="progress">Raised so far:</label>
+      <progress id="progress" value="35000" max="50000"></progress>
+      <span>$35,000 of $50,000</span>
+    </div>
+
+    <!-- 3. Donation Form with Preset Amounts -->
+    <section id="donation-form" class="donation-box">
+      <h2>Choose Your Gift</h2>
+      <form action="/process-donation" method="POST">
+        <div class="gift-options">
+          <label>
+            <input type="radio" name="amount" value="25" /> $25
+          </label>
+          <label>
+            <input type="radio" name="amount" value="50" /> $50
+          </label>
+          <label>
+            <input type="radio" name="amount" value="100" /> $100
+          </label>
+          <label>
+            <input type="radio" name="amount" value="other" /> Other:
+            <input type="text" name="other_amount" placeholder="$" aria-label="Other amount" />
+          </label>
+        </div>
+
+        <label class="checkbox-inline">
+          <input type="checkbox" name="recurring" /> Make this a monthly gift
+        </label>
+
+        <!-- Replace this with your payment widget -->
+        <div id="payment-element"><!-- Stripe/PayPal Elements will mount here --></div>
+
+        <button type="submit" class="button">Donate Now</button>
+      </form>
+
+      <p class="recurring-note">
+        Set up a monthly gift to help sustain our work year-round.
+      </p>
+    </section>
+
+    <!-- 4. Trust Badges -->
+    <div class="trust-badges">
+      <img src="images/ssl-lock.svg" alt="Secure SSL transaction" />
+      <img src="images/pci-compliant.svg" alt="PCI Compliant" />
+      <img src="images/charity-navigator.svg" alt="Charity Navigator 4-Star" />
+    </div>
+
+    <!-- 5. Social Proof / Testimonials Carousel -->
+    <section class="carousel-section">
+      <h2>What Our Supporters Say</h2>
+      <div class="carousel">
+        <!-- You can swap this markup for your preferred JS carousel -->
+        <blockquote>
+          “Run4Ricky gave our family hope and a place to belong.”<br>
+          — <strong>Michael B.</strong>
+        </blockquote>
+        <blockquote>
+          “I’ve never seen such a warm, inclusive event. It's an honor to volunteer.”<br>
+          — <strong>Sarah K.</strong>
+        </blockquote>
+        <blockquote>
+          “I feel inspired every time I donate—this community truly cares.”<br>
+          — <strong>Jane D.</strong>
+        </blockquote>
+      </div>
     </section>
   </main>
 
   <footer>
     <section>
-      <h2>Contact Us</h2>
-      <p>If you have questions, suggestions, or would like to connect with us, please reach out:</p>
-      <p><strong>Email:</strong> <a href="mailto:rbarbieri99@gmail.com">rbarbieri99@gmail.com</a></p>
-
-      <div class="social-icons" aria-label="Follow us on social media">
+      <div class="social-icons">
         <a href="https://facebook.com/Run4Ricky" target="_blank" aria-label="Facebook">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" />
-        </a>
-        <a href="https://instagram.com/Run4Ricky" target="_blank" aria-label="Instagram">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" />
         </a>
         <a href="https://twitter.com/Run4Ricky" target="_blank" aria-label="Twitter">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" />
@@ -52,13 +115,8 @@
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" />
         </a>
       </div>
-
       <p>&copy; 2025 Run4Ricky Foundation. All rights reserved.</p>
     </section>
-  </footer>
-</body>
-</html>
-
   </footer>
 </body>
 </html>
