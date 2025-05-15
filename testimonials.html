@@ -12,6 +12,31 @@
       padding-left: 1rem;
       border-left: 4px solid #3f51b5;
     }
+    form {
+      margin-top: 2rem;
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    form input, form textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    form button {
+      padding: 0.5rem 1rem;
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #303f9f;
+    }
   </style>
 </head>
 <body>
@@ -45,6 +70,19 @@
       <blockquote>
         "I've never seen such a warm, inclusive event. It's an honor to volunteer." — Sarah K.
       </blockquote>
+    </section>
+
+    <section>
+      <h2>Share Your Testimonial</h2>
+      <form action="mailto:rbarbieri99@gmail.com" method="POST" enctype="text/plain">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="testimonial">Your Testimonial</label>
+        <textarea id="testimonial" name="testimonial" rows="4" required></textarea>
+
+        <button type="submit">Submit Testimonial</button>
+      </form>
     </section>
   </main>
 
