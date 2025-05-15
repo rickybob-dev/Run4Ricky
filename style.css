@@ -94,7 +94,6 @@ nav a:hover {
   color: var(--color-accent);
   transform: scale(1.05);
 }
-nav a.active,
 nav a[aria-current="page"] {
   color: var(--color-accent);
   font-weight: 700;
@@ -272,19 +271,21 @@ blockquote::after {
 .donation-box {
   font-size: 1.1rem;
   line-height: 1.8;
-  max-width: 600px;         /* ← limit its width */
-  margin: var(--space-l) auto; /* ← centre it horizontally */
-  /* (optional) to centre its text: text-align: center; */
+  max-width: 600px;
+  margin: var(--space-l) auto;
 }
-
 .donation-box .button {
   display: block;
-  margin: 1rem auto;        /* ← centre the button */
+  margin: 1rem auto;
   padding: var(--space-m) var(--space-l);
   border-radius: calc(var(--radius) * 2);
   font-size: 1.15rem;
 }
-
+.recurring-note {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  margin-top: var(--space-s);
+}
 
 /* Footer */
 footer {
@@ -321,7 +322,6 @@ footer {
   }
   .gallery, .carousel {
     grid-template-columns: 1fr;
-    flex-direction: column;
   }
   main {
     padding: 0 var(--space-s);
