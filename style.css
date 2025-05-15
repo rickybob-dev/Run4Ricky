@@ -226,25 +226,36 @@ ul.events-list li {
 }
 
 /* Testimonials */
+/* ——— in style.css ——— */
+/* Testimonials / blockquotes */
 blockquote {
-  font-style: italic;
+  position: relative;
+  background: var(--color-white);
+  padding: calc(var(--space-l) + 1rem) var(--space-m);
   margin: var(--space-m) 0;
-  padding-left: var(--space-s);
-  border-left: 4px solid var(--color-primary);
+  border: none;
+  box-shadow: var(--shadow-sm);
+  font-style: italic;
   color: #444;
 }
 blockquote::before {
   content: "“";
-  font-size: 2rem;
-  vertical-align: top;
+  position: absolute;
+  top: var(--space-s);
+  left: var(--space-s);
+  font-size: 3rem;
   color: var(--color-primary);
 }
 blockquote::after {
   content: "”";
-  font-size: 2rem;
-  vertical-align: bottom;
+  position: absolute;
+  bottom: var(--space-s);
+  right: var(--space-s);
+  font-size: 3rem;
   color: var(--color-primary);
 }
+/* (you can adjust the font-size / spacing to taste) */
+
 
 /* Tips Section */
 .tips-list {
