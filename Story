@@ -1,0 +1,43 @@
+<!-- story.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Run4Ricky Foundation - Ricky's Story</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/3129/live/7f9d9e90-2399-11f0-8c2e-77498b1ce297.jpg" alt="Run4Ricky Logo">
+    <h1>Run4Ricky Foundation</h1>
+    <p>Empowering lives through awareness, support, and inclusion.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="mission.html">Mission</a>
+    <a href="story.html">Story</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="video.html">Video</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="events.html">Events</a>
+    <a href="volunteer.html">Volunteer</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Ricky's Story</h2>
+      <p>Ricky was a bright, kind, and spirited individual who inspired everyone around him. Born with a rare condition, Ricky never let it define him. His courage, love for running, and passion for community brought people together in powerful ways.</p>
+      <p>The Run4Ricky Foundation was created to honor his legacy and continue the mission he started—to uplift, support, and celebrate the strength in all of us. Through every step, we carry Ricky's spirit forward—fueling change and promoting inclusion, one stride at a time.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Email: <a href="mailto:rbarbieri99@gmail.com">rbarbieri99@gmail.com</a></p>
+    <p><a href="https://paypal.me/rickybarb/10" target="_blank">Donate via PayPal</a></p>
+    <p>&copy; 2025 Run4Ricky Foundation. All rights reserved.</p>
+  </footer>
+</body>
+</html>
