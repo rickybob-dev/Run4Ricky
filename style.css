@@ -7,6 +7,10 @@ body {
   color: #333;
 }
 
+a, button {
+  transition: all 0.3s ease;
+}
+
 header {
   background: linear-gradient(to right, #3f51b5, #5c6bc0);
   color: white;
@@ -15,9 +19,21 @@ header {
 }
 
 header img {
-  max-width: 120px;
+  width: 100px;
+  height: auto;
   border-radius: 50%;
   margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  margin: 0.5rem 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin: 0;
+  font-size: 1.2rem;
 }
 
 nav {
@@ -37,6 +53,10 @@ nav a {
   font-weight: bold;
 }
 
+nav a:hover {
+  color: #ff6f61;
+}
+
 main {
   max-width: 900px;
   margin: 2rem auto;
@@ -49,6 +69,20 @@ section {
   margin-bottom: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+ul.events-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.events-list li {
+  background: #f8f9ff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #3f51b5;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 h2 {
@@ -65,6 +99,28 @@ h2 {
   margin-top: 1rem;
 }
 
+form input[type="email"] {
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+form button {
+  background-color: #3f51b5;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #303f9f;
+}
+
 footer {
   text-align: center;
   padding: 1rem;
@@ -72,12 +128,50 @@ footer {
   color: #555;
 }
 
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.social-icons a img {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(100%);
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover img {
+  filter: none;
+  transform: scale(1.1);
+}
+
 @media (max-width: 600px) {
+  header {
+    padding: 1rem;
+  }
+
+  header img {
+    width: 80px;
+  }
+
   section {
     padding: 1rem;
   }
+
   nav a {
     display: block;
     margin: 0.5rem 0;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .social-icons {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
