@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Donate - Run4Ricky Foundation</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Stripe.js -->
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
   <header>
-    <img src="https://ichef.bbci.co.uk/ace/standard/1600/cpsprod...f9d9e90-2399-11f0-8c2e-77498b1ce297.jpg" alt="Run4Ricky Logo" />
+    <img src="images/logo.png" alt="Run4Ricky Logo" />
     <h1>Run4Ricky Foundation</h1>
     <p>Empowering lives through awareness, support, and inclusion.</p>
   </header>
@@ -22,7 +24,7 @@
     <a href="donate.html" class="active" aria-current="page">Donate</a>
   </nav>
 
-  <!-- 1. Hero Impact Banner -->
+  <!-- Hero Impact Banner -->
   <section class="hero-donate">
     <div class="hero-overlay">
       <h1>Help Us Reach $50,000 by July 1st</h1>
@@ -32,60 +34,58 @@
   </section>
 
   <main>
-    <!-- 2. Progress Bar & Goal Tracker -->
+    <!-- Progress Bar & Goal Tracker -->
     <div class="goal-tracker">
       <label for="progress">Raised so far:</label>
-      <progress id="progress" value="35000" max="50000"></progress>
-      <span>$35,000 of $50,000</span>
+      <progress id="progress" value="0" max="50000"></progress>
+      <span>$0 of $50,000</span>
     </div>
 
-    <!-- 3. Donation Form with Preset Amounts -->
+    <!-- Donation Form with Stripe Elements -->
     <section id="donation-form" class="donation-box">
       <h2>Choose Your Gift</h2>
-      <form action="/process-donation" method="POST">
+      <form id="payment-form">
         <div class="gift-options">
           <label>
-            <input type="radio" name="amount" value="25" /> $25
+            <input type="radio" name="amount" value="2500" checked /> $25
           </label>
           <label>
-            <input type="radio" name="amount" value="50" /> $50
+            <input type="radio" name="amount" value="5000" /> $50
           </label>
           <label>
-            <input type="radio" name="amount" value="100" /> $100
+            <input type="radio" name="amount" value="10000" /> $100
           </label>
           <label>
             <input type="radio" name="amount" value="other" /> Other:
             <input type="text" name="other_amount" placeholder="$" aria-label="Other amount" />
           </label>
         </div>
-
         <label class="checkbox-inline">
           <input type="checkbox" name="recurring" /> Make this a monthly gift
         </label>
 
-        <!-- Replace this with your payment widget -->
-        <div id="payment-element"><!-- Stripe/PayPal Elements will mount here --></div>
+        <!-- Stripe Card Element -->
+        <div id="payment-element" class="payment-element"></div>
+        <div id="card-errors" role="alert" class="sr-only"></div>
 
-        <button type="submit" class="button">Donate Now</button>
+        <button id="submit-button" type="submit" class="button">Donate Now</button>
       </form>
-
       <p class="recurring-note">
         Set up a monthly gift to help sustain our work year-round.
       </p>
     </section>
 
-    <!-- 4. Trust Badges -->
+    <!-- Trust Badges -->
     <div class="trust-badges">
       <img src="images/ssl-lock.svg" alt="Secure SSL transaction" />
       <img src="images/pci-compliant.svg" alt="PCI Compliant" />
       <img src="images/charity-navigator.svg" alt="Charity Navigator 4-Star" />
     </div>
 
-    <!-- 5. Social Proof / Testimonials Carousel -->
+    <!-- Testimonials Carousel -->
     <section class="carousel-section">
       <h2>What Our Supporters Say</h2>
       <div class="carousel">
-        <!-- You can swap this markup for your preferred JS carousel -->
         <blockquote>
           “Run4Ricky gave our family hope and a place to belong.”<br>
           — <strong>Michael B.</strong>
@@ -103,20 +103,89 @@
   </main>
 
   <footer>
-    <section>
-      <div class="social-icons">
-        <a href="https://facebook.com/Run4Ricky" target="_blank" aria-label="Facebook">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" />
-        </a>
-        <a href="https://twitter.com/Run4Ricky" target="_blank" aria-label="Twitter">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" />
-        </a>
-        <a href="https://youtube.com/@Run4Ricky" target="_blank" aria-label="YouTube">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" />
-        </a>
-      </div>
-      <p>&copy; 2025 Run4Ricky Foundation. All rights reserved.</p>
-    </section>
+    <div class="social-icons">
+      <a href="https://facebook.com/Run4Ricky" target="_blank" aria-label="Facebook">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" />
+      </a>
+      <a href="https://twitter.com/Run4Ricky" target="_blank" aria-label="Twitter">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" />
+      </a>
+      <a href="https://youtube.com/@Run4Ricky" target="_blank" aria-label="YouTube">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" />
+      </a>
+    </div>
+    <p>&copy; 2025 Run4Ricky Foundation. All rights reserved.</p>
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Stripe Elements initialization
+    const stripe = Stripe('pk_test_XXXXXXXXXXXXXXXXXXXXXXXX');
+    const elements = stripe.elements();
+    const style = {
+      base: {
+        color: '#32325d',
+        fontFamily: '"Segoe UI", sans-serif',
+        fontSize: '16px',
+        '::placeholder': { color: '#a0aec0' }
+      },
+      invalid: { color: '#e53e3e' }
+    };
+    const card = elements.create('card', { style });
+    card.mount('#payment-element');
+
+    // Handle real-time validation errors
+    card.on('change', ({ error }) => {
+      const display = document.getElementById('card-errors');
+      display.textContent = error ? error.message : '';
+      display.classList.toggle('sr-only', !error);
+    });
+
+    // Submit handler
+    const form = document.getElementById('payment-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      // Determine amount
+      let amount = parseInt(form.amount.value, 10);
+      if (form.amount.value === 'other') {
+        const other = parseFloat(form.other_amount.value);
+        if (isNaN(other) || other <= 0) return alert('Enter a valid amount');
+        amount = Math.round(other * 100);
+      }
+      // Create PaymentIntent
+      const { clientSecret } = await fetch('/create-payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount })
+      }).then(r => r.json());
+      
+      // Confirm Card Payment
+      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, { payment_method: { card } });
+      if (error) {
+        document.getElementById('card-errors').textContent = error.message;
+        document.getElementById('card-errors').classList.remove('sr-only');
+      } else if (paymentIntent.status === 'succeeded') {
+        form.innerHTML = '<h3>Thank you for your generous gift!</h3>';
+        updateProgress();
+      }
+    });
+
+    // Dynamic Progress Bar
+    async function updateProgress() {
+      try {
+        const { totalRaised, goal } = await fetch('/donation-stats').then(r => r.json());
+        const prog = document.getElementById('progress');
+        prog.max = goal;
+        prog.value = totalRaised;
+        prog.nextElementSibling.textContent = `$${totalRaised.toLocaleString()} of $${goal.toLocaleString()}`;
+      } catch (err) {
+        console.error('Progress update failed', err);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      updateProgress();
+      setInterval(updateProgress, 60000);
+    });
+  </script>
 </body>
 </html>
