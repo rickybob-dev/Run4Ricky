@@ -273,94 +273,13 @@ blockquote::after {
   font-size: 1.1rem;
   line-height: 1.8;
 }
-.donation-box .button {
+donation-box .button {
+  display: block;
+  margin: 1rem auto;    /* vertical spacing + horizontal centering */
   padding: var(--space-m) var(--space-l);
   border-radius: calc(var(--radius) * 2);
   font-size: 1.15rem;
 }
-
-/* Hero Impact Banner */
-.hero-donate {
-  position: relative;
-  background: url('images/run-event.jpg') center/cover no-repeat;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  color: var(--color-white);
-  text-align: center;
-  padding: var(--space-l);
-  border-radius: var(--radius);
-}
-
-/* Goal Tracker */
-.goal-tracker {
-  text-align: center;
-  margin: var(--space-m) 0;
-}
-.goal-tracker progress {
-  width: 100%;
-  height: 1rem;
-  accent-color: var(--color-accent);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-/* Gift Options */
-.gift-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-s);
-  margin-bottom: var(--space-s);
-}
-.gift-options label {
-  flex: 1 1 calc(33% - 1rem);
-  background: var(--color-white);
-  padding: var(--space-s);
-  border: 1px solid var(--color-gray);
-  border-radius: var(--radius);
-  text-align: center;
-  cursor: pointer;
-}
-.gift-options input[type="radio"] {
-  margin-right: var(--space-xs);
-}
-
-/* Checkbox inline */
-.checkbox-inline {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  margin-top: var(--space-s);
-}
-
-/* Trust Badges */
-.trust-badges {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-m);
-  margin-top: var(--space-m);
-}
-.trust-badges img {
-  height: 40px;
-}
-
-/* Carousel Section */
-.carousel-section {
-  margin: var(--space-l) 0;
-}
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: var(--space-s);
-  padding-bottom: var(--space-s);
-}
-.carousel blockquote {
-  min-width: 250px;
-  flex-shrink: 0;
 }
 
 /* Footer */
