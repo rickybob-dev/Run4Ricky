@@ -272,15 +272,19 @@ blockquote::after {
 .donation-box {
   font-size: 1.1rem;
   line-height: 1.8;
+  max-width: 600px;         /* ← limit its width */
+  margin: var(--space-l) auto; /* ← centre it horizontally */
+  /* (optional) to centre its text: text-align: center; */
 }
-donation-box .button {
+
+.donation-box .button {
   display: block;
-  margin: 1rem auto;    /* vertical spacing + horizontal centering */
+  margin: 1rem auto;        /* ← centre the button */
   padding: var(--space-m) var(--space-l);
   border-radius: calc(var(--radius) * 2);
   font-size: 1.15rem;
 }
-}
+
 
 /* Footer */
 footer {
