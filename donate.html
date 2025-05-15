@@ -2,164 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Donate - Run4Ricky Foundation</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- PayPal SDK -->
-  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
-  <!-- Stripe.js for Checkout -->
-  <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
   <header>
-    <img src="images/logo.png" alt="Run4Ricky Logo" />
+    <img src="https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/3129/live/7f9d9e90-2399-11f0-8c2e-77498b1ce297.jpg" alt="Run4Ricky Logo" />
     <h1>Run4Ricky Foundation</h1>
     <p>Empowering lives through awareness, support, and inclusion.</p>
   </header>
 
   <nav>
     <a href="index.html">Home</a>
-    <a href="events-newsletter.html">Events &amp; Newsletter</a>
+    <a href="story.html">Story</a>
     <a href="media.html">Media</a>
-    <a href="story.html">Stories</a>
     <a href="testimonials.html">Testimonials</a>
-    <a href="donate.html" class="active" aria-current="page">Donate</a>
+    <a href="events-newsletter.html">Events & Newsletter</a>
+    <a href="volunteer.html">Volunteer</a>
+    <a href="donate.html" class="active">Donate</a>
   </nav>
 
-  <!-- Hero Impact Banner -->
-  <section class="hero-donate">
-    <div class="hero-overlay">
-      <h1>Help Us Reach $50,000 by July 1st</h1>
-      <p>Your gift powers awareness events &amp; community outreach.</p>
-      <a href="#donation-form" class="button">Give Now</a>
-    </div>
-  </section>
-
   <main>
-    <!-- Donation Section -->
-    <section id="donation-form" class="donation-box">
-      <h2>Choose Your Gift</h2>
-      <div class="gift-options">
-        <label><input type="radio" name="amount" value="25" checked /> $25</label>
-        <label><input type="radio" name="amount" value="50" /> $50</label>
-        <label><input type="radio" name="amount" value="100" /> $100</label>
-        <label>
-          <input type="radio" name="amount" value="other" /> Other:
-          <input type="text" name="other_amount" placeholder="$" aria-label="Other amount" style="width: 4rem; margin-left: .5rem;" />
-        </label>
-      </div>
-      <label class="checkbox-inline">
-        <input type="checkbox" name="recurring" /> Make this a monthly gift
-      </label>
+    <section class="donation-box">
+      <h2>Support the Run4Ricky Foundation</h2>
+      <p>Every donation helps us organize inclusive events, fund outreach programs, and promote community wellness. No amount is too small—your support fuels our mission.</p>
+      
+      <a class="button" href="https://paypal.me/rickybarb/10" target="_blank" rel="noopener">Donate via PayPal</a>
 
-      <!-- Card Payment Button -->
-      <button id="card-button" type="button" class="button" style="display: block; width: 100%; margin-top: 1rem;">
-        Pay with Card
-      </button>
-
-      <!-- Or separator -->
-      <p style="text-align: center; margin: 1rem 0;">Or</p>
-
-      <!-- PayPal Smart Buttons -->
-      <div id="paypal-button-container"></div>
-
-      <p class="recurring-note">
-        Set up a monthly gift to help sustain our work year-round.
-      </p>
-    </section>
-
-    <!-- Progress Tracker -->
-    <div class="goal-tracker">
-      <label for="progress">Raised so far:</label>
-      <progress id="progress" value="0" max="50000"></progress>
-      <span>$0 of $50,000</span>
-    </div>
-
-    <!-- Testimonials Carousel -->
-    <section class="carousel-section">
-      <h2>What Our Supporters Say</h2>
-      <div class="carousel">
-        <blockquote>
-          “Run4Ricky gave our family hope and a place to belong.”<br>
-          — <strong>Michael B.</strong>
-        </blockquote>
-        <blockquote>
-          “I’ve never seen such a warm, inclusive event. It's an honor to volunteer.”<br>
-          — <strong>Sarah K.</strong>
-        </blockquote>
-        <blockquote>
-          “I feel inspired every time I donate—this community truly cares.”<br>
-          — <strong>Jane D.</strong>
-        </blockquote>
-      </div>
+      <p class="recurring-note">Consider setting up a recurring monthly donation to help sustain our efforts year-round.</p>
     </section>
   </main>
 
   <footer>
-    <div class="social-icons">
-      <a href="https://facebook.com/Run4Ricky" target="_blank" aria-label="Facebook"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" /></a>
-      <a href="https://twitter.com/Run4Ricky" target="_blank" aria-label="Twitter"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" /></a>
-      <a href="https://youtube.com/@Run4Ricky" target="_blank" aria-label="YouTube"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" /></a>
-    </div>
-    <p>&copy; 2025 Run4Ricky Foundation. All rights reserved.</p>
+    <section>
+      <h2>Contact Us</h2>
+      <p>If you have questions, suggestions, or would like to connect with us, please reach out:</p>
+      <p><strong>Email:</strong> <a href="mailto:rbarbieri99@gmail.com">rbarbieri99@gmail.com</a></p>
+
+      <div class="social-icons" aria-label="Follow us on social media">
+        <a href="https://facebook.com/Run4Ricky" target="_blank" aria-label="Facebook">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" />
+        </a>
+        <a href="https://instagram.com/Run4Ricky" target="_blank" aria-label="Instagram">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" />
+        </a>
+        <a href="https://twitter.com/Run4Ricky" target="_blank" aria-label="Twitter">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" />
+        </a>
+        <a href="https://youtube.com/@Run4Ricky" target="_blank" aria-label="YouTube">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" />
+        </a>
+      </div>
+
+      <p>&copy; 2025 Run4Ricky Foundation. All rights reserved.</p>
+    </section>
   </footer>
-
-  <!-- Scripts -->
-  <script>
-    // Utility to get selected amount
-    function getSelectedAmount() {
-      const flowers = document.getElementsByName('amount');
-      let selected = Array.from(flowers).find(r => r.checked).value;
-      if (selected === 'other') {
-        const other = parseFloat(document.querySelector('input[name="other_amount"]').value);
-        return isNaN(other) || other <= 0 ? null : other;
-      }
-      return parseFloat(selected);
-    }
-
-    // Stripe Checkout
-    const stripe = Stripe('pk_test_XXXXXXXXXXXXXXXX');
-    document.getElementById('card-button').addEventListener('click', async () => {
-      const amount = getSelectedAmount();
-      if (!amount) return alert('Please enter a valid amount');
-      const { sessionId } = await fetch('/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify({ amount: Math.round(amount * 100) })
-      }).then(r => r.json());
-      stripe.redirectToCheckout({ sessionId });
-    });
-
-    // PayPal Buttons
-    paypal.Buttons({
-      style: { layout: 'vertical', color: 'blue', shape: 'rect', label: 'paypal' },
-      createOrder: (data, actions) => {
-        const amount = getSelectedAmount();
-        if (!amount) return alert('Please enter a valid amount');
-        return actions.order.create({
-          purchase_units: [{ amount: { value: amount.toFixed(2) } }]
-        });
-      },
-      onApprove: (data, actions) => actions.order.capture().then(details => {
-        document.getElementById('donation-form').innerHTML = `<h3>Thank you, ${details.payer.name.given_name}! Your $${details.purchase_units[0].amount.value} donation is appreciated.</h3>`;
-        updateProgress();
-      })
-    }).render('#paypal-button-container');
-
-    // Dynamic Progress Bar
-    async function updateProgress() {
-      try {
-        const { totalRaised, goal } = await fetch('/donation-stats').then(r => r.json());
-        const prog = document.getElementById('progress');
-        prog.max = goal;
-        prog.value = totalRaised;
-        prog.nextElementSibling.textContent = `$${totalRaised.toLocaleString()} of $${goal.toLocaleString()}`;
-      } catch (e) { console.error('Progress update failed', e); }
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      updateProgress();
-      setInterval(updateProgress, 60000);
-    });
-  </script>
 </body>
 </html>
