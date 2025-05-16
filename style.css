@@ -97,7 +97,14 @@
   header img:hover {
     transform: rotate(-5deg) scale(1.05);
   }
-
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* optional padding above/below */
+    padding: var(--space-3) 0;
+  }
   /* Navigation */
   nav {
     position: sticky;
