@@ -52,12 +52,21 @@
     </section>
 
     <!-- Dynamic Inspiring Quotes & Advice Section -->
-    <section id="quotes-section">
-  <blockquote id="quote-text"></blockquote>
-  <p id="quote-author"></p>
-  <button id="prev">‹</button>
-  <button id="next">›</button>
-</section>
+   <section id="quotes-section">
+      <h2>Inspiring Quotes & Advice</h2>
+      <div id="quote-container">
+        <blockquote id="quote-text">“Believe you can and you're halfway there.”</blockquote>
+        <p id="quote-author">— Theodore Roosevelt</p>
+      </div>
+      <div class="quote-controls">
+        <button id="prev" aria-label="Previous quote">
+          <i class="fas fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button id="next" aria-label="Next quote">
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </section>
 
 
     <section>
@@ -136,8 +145,6 @@
       });
     });
   </script>
-
-  <script src="script.js" defer></script>
 
 </body>
 </html>
