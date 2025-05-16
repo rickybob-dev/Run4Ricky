@@ -21,9 +21,8 @@
       referrerpolicy="no-referrer"
     />
   </noscript>
-  
-  
-   <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
@@ -36,10 +35,11 @@
     <a href="index.html">Home</a>
     <a href="story.html">Story</a>
     <a href="media.html">Media</a>
-    <a href="events-newsletter.html">Events &amp; Newsletter</a>
+    <a href="events-newsletter.html">Events & Newsletter</a>
     <a href="donate.html">Donate</a>
     <a href="disabled-living.html">Disabled Living</a>
   </nav>
+
   <main>
     <section>
       <h2>About Run4Ricky</h2>
@@ -50,23 +50,18 @@
       <h2>Our Mission</h2>
       <p>Through advocacy, education, and community events, we aim to create equal opportunities and support networks for disabled individuals and their families. Our mission is rooted in compassion, dignity, and a belief that everyone deserves access to resources, inclusion, and a chance to thrive.</p>
     </section>
-<section id="quotes-section">
+
+    <!-- Dynamic Inspiring Quotes & Advice Section -->
+    <section id="quotes-section">
       <h2>Inspiring Quotes & Advice</h2>
       <div id="quote-container">
         <blockquote id="quote-text">“Believe you can and you're halfway there.”</blockquote>
         <p id="quote-author">— Theodore Roosevelt</p>
       </div>
       <div class="quote-controls">
-        <button id="prev">Previous</button>
-        <button id="next">Next</button>
+        <button id="prev" aria-label="Previous quote">Previous</button>
+        <button id="next" aria-label="Next quote">Next</button>
       </div>
-    </section>
-
-    <section>
-      <h2>Testimonials</h2>
-      <blockquote>
-        “Smile and keep on running .” — <strong>Riccardo B.</strong>
-      </blockquote>
     </section>
 
     <section>
@@ -86,57 +81,64 @@
   <footer>
     <section>
       <h2>Contact Us</h2>
-
-      <!-- Semantic nav for social links -->
       <nav class="social-icons" aria-label="Follow us on social media">
-        <!-- Facebook (update URL if/when you have a page) -->
-        <a
-          href="#"
-          title="Visit our Facebook page"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-        >
+        <a href="#" title="Visit our Facebook page" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <i class="fab fa-facebook-f"></i>
           <span class="sr-only">Facebook</span>
         </a>
-<a
-  href="mailto:rbarbieri99@gmail.com"
-  title="Send us an email"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Email"
->
-  <i class="fas fa-envelope"></i>
-  <span class="sr-only">Email</span>
-</a>
-        <!-- Instagram -->
-        <a
-          href="https://www.instagram.com/run4riccardo/"
-          title="Follow us on Instagram"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-        >
+        <a href="mailto:rbarbieri99@gmail.com" title="Send us an email" target="_blank" rel="noopener noreferrer" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+          <span class="sr-only">Email</span>
+        </a>
+        <a href="https://www.instagram.com/run4riccardo/" title="Follow us on Instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <i class="fab fa-instagram"></i>
           <span class="sr-only">Instagram</span>
         </a>
-
-        <!-- YouTube -->
-<a
-  href="#"
-  title="Follow us on YouTube"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="YouTube"
->
-  <i class="fab fa-youtube"></i>
-  <span class="sr-only">YouTube</span>
-</a>
+        <a href="#" title="Follow us on YouTube" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+          <span class="sr-only">YouTube</span>
+        </a>
       </nav>
-
       <p>&copy; 2025 Run4Ricky Foundation</p>
     </section>
   </footer>
+
+  <!-- Dynamic Quotes Script -->
+  <script>
+    const quotes = [
+      { text: "Smile and keep on running.", author: "Riccardo B." },
+      { text: "Your limitation—it’s only your imagination.", author: "Unknown" },
+      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+      { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+      { text: "Dream it. Wish it. Do it.", author: "Unknown" },
+      { text: "Challenges are what make life interesting; overcoming them is what makes life meaningful.", author: "Joshua J. Marine" },
+      { text: "Don’t watch the clock; do what it does. Keep going.", author: "Sam Levenson" }
+    ];
+    let currentIndex = 0;
+
+    function showQuote() {
+      const quote = quotes[currentIndex];
+      document.getElementById("quote-text").textContent = `“${quote.text}”`;
+      document.getElementById("quote-author").textContent = `— ${quote.author}`;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      showQuote();
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % quotes.length;
+        showQuote();
+      }, 10000);
+
+      document.getElementById("next").addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % quotes.length;
+        showQuote();
+      });
+
+      document.getElementById("prev").addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + quotes.length) % quotes.length;
+        showQuote();
+      });
+    });
+  </script>
 </body>
 </html>
