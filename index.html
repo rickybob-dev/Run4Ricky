@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Run4Ricky Foundation - Home</title>
 
   <!-- Lazy‑load Font Awesome -->
@@ -51,12 +51,11 @@
       <p>Through advocacy, education, and community events, we aim to create equal opportunities and support networks for disabled individuals and their families. Our mission is rooted in compassion, dignity, and a belief that everyone deserves access to resources, inclusion, and a chance to thrive.</p>
     </section>
 
-    <!-- Dynamic Inspiring Quotes & Advice Section -->
-   <section id="quotes-section">
+    <section id="quotes-section">
       <h2>Inspiring Quotes & Advice</h2>
       <div id="quote-container">
-        <blockquote id="quote-text">“Believe you can and you're halfway there.”</blockquote>
-        <p id="quote-author">— Theodore Roosevelt</p>
+        <blockquote id="quote-text"></blockquote>
+        <p id="quote-author"></p>
       </div>
       <div class="quote-controls">
         <button id="prev" aria-label="Previous quote">
@@ -67,7 +66,6 @@
         </button>
       </div>
     </section>
-
 
     <section>
       <h2>Share Your Testimonial</h2>
@@ -108,43 +106,6 @@
     </section>
   </footer>
 
-  <!-- Dynamic Quotes Script -->
-  <script>
-    const quotes = [
-      { text: "Smile and keep on running.", author: "Riccardo B." },
-      { text: "Your limitation—it’s only your imagination.", author: "Unknown" },
-      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
-      { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
-      { text: "Dream it. Wish it. Do it.", author: "Unknown" },
-      { text: "Challenges are what make life interesting; overcoming them is what makes life meaningful.", author: "Joshua J. Marine" },
-      { text: "Don’t watch the clock; do what it does. Keep going.", author: "Sam Levenson" }
-    ];
-    let currentIndex = 0;
-
-    function showQuote() {
-      const quote = quotes[currentIndex];
-      document.getElementById("quote-text").textContent = `“${quote.text}”`;
-      document.getElementById("quote-author").textContent = `— ${quote.author}`;
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      showQuote();
-      setInterval(() => {
-        currentIndex = (currentIndex + 1) % quotes.length;
-        showQuote();
-      }, 10000);
-
-      document.getElementById("next").addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % quotes.length;
-        showQuote();
-      });
-
-      document.getElementById("prev").addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + quotes.length) % quotes.length;
-        showQuote();
-      });
-    });
-  </script>
   <script src="script.js" defer></script>
 </body>
 </html>
