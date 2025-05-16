@@ -1,6 +1,6 @@
 @layer variables {
   :root {
-    /* Color palette */
+    /* Colors */
     --color-primary: #3f51b5;
     --color-primary-light: #5c6bc0;
     --color-accent: #ff6f61;
@@ -16,23 +16,28 @@
     --space-4: 3rem;
 
     /* Borders & shadows */
-    --radius: 0.5rem;
-    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --radius: 0.75rem;
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
 
     /* Transitions */
-    --transition-duration: 0.4s;
+    --transition-duration: 0.3s;
     --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Logo styling */
+    --logo-border: 3px solid rgba(255, 255, 255, 0.8);
+    --logo-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 }
 
 @layer base {
   *, *::before, *::after {
     box-sizing: border-box;
-    transition: background-color var(--transition-duration) var(--ease),
-                color var(--transition-duration) var(--ease),
-                border-color var(--transition-duration) var(--ease),
-                transform var(--transition-duration) var(--ease);
+    transition:
+      background-color var(--transition-duration) var(--ease),
+      color var(--transition-duration) var(--ease),
+      border-color var(--transition-duration) var(--ease),
+      transform var(--transition-duration) var(--ease);
   }
   html { scroll-behavior: smooth; }
   body {
@@ -51,7 +56,10 @@
 
 @layer dark-mode {
   @media (prefers-color-scheme: dark) {
-    body { background: var(--color-bg-dark); color: var(--color-text-dark); }
+    body {
+      background: var(--color-bg-dark);
+      color: var(--color-text-dark);
+    }
     header, nav, main section, footer {
       background: #1e1e1e;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -60,7 +68,62 @@
 }
 
 @layer components {
-  /* Utility classes */
+  /* Logo */
+  header img {
+    width: clamp(80px, 10vw, 100px);
+    margin-bottom: var(--space-2);
+    border: var(--logo-border);
+    border-radius: 50%;
+    box-shadow: var(--logo-shadow);
+    transition: transform var(--transition-duration) var(--ease);
+  }
+  header img:hover {
+    transform: rotate(-5deg) scale(1.05);
+  }
+
+  /* Arrow controls & Back to Top */
+  .arrow-btn,
+  .back-to-top {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    box-shadow: var(--shadow-md);
+    color: #fff;
+    font-size: 1.5rem;
+    transition:
+      background var(--transition-duration) var(--ease),
+      transform var(--transition-duration) var(--ease),
+      box-shadow var(--transition-duration) var(--ease);
+  }
+  .arrow-btn:hover,
+  .back-to-top:hover {
+    background: var(--color-accent);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+  .back-to-top {
+    bottom: var(--space-4);
+    right: var(--space-2);
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 999;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .back-to-top.show {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+  .back-to-top::before {
+    content: '⇧';
+    position: absolute;
+  }
+
+  /* Utilities */
   .shadow-sm { box-shadow: var(--shadow-sm); }
   .shadow-md { box-shadow: var(--shadow-md); }
   .radius { border-radius: var(--radius); }
@@ -72,22 +135,25 @@
     text-align: center;
     padding: var(--space-4) var(--space-2);
   }
-  header img {
-    width: clamp(80px, 10vw, 100px);
-    margin-bottom: var(--space-2);
-    @apply .radius .shadow-md;
+  header h1 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin: var(--space-1) 0;
   }
-  header h1 { font-size: clamp(2rem, 5vw, 2.5rem); margin: var(--space-1) 0; }
-  header p { font-size: 1.1rem; margin: 0; }
+  header p {
+    font-size: 1.1rem;
+    margin: 0;
+  }
 
   /* Navigation */
   nav {
-    position: sticky; top: 0;
+    position: sticky;
+    top: 0;
     background: #fff;
-    display: flex; justify-content: center;
+    display: flex;
+    justify-content: center;
     gap: var(--space-3);
     padding: var(--space-2) 0;
-    @apply .shadow-sm;
+    box-shadow: var(--shadow-sm);
     z-index: 999;
   }
   nav a {
@@ -96,8 +162,13 @@
     padding: var(--space-1) var(--space-2);
     border-radius: var(--radius);
   }
-  nav a:hover { color: var(--color-accent); transform: scale(1.1); }
-  nav a[aria-current] { border-bottom: 2px solid var(--color-accent); }
+  nav a:hover {
+    color: var(--color-accent);
+    transform: scale(1.1);
+  }
+  nav a[aria-current] {
+    border-bottom: 2px solid var(--color-accent);
+  }
 
   /* Buttons */
   .btn, .button {
@@ -108,9 +179,11 @@
     background: var(--color-accent);
     color: #fff;
   }
-  .btn:hover, .button:hover { transform: translateY(-3px) scale(1.05); }
+  .btn:hover, .button:hover {
+    transform: translateY(-3px) scale(1.05);
+  }
 
-  /* Sections */
+  /* Layout */
   main {
     max-width: 900px;
     margin: var(--space-4) auto;
@@ -120,15 +193,21 @@
     background: #fff;
     padding: var(--space-3);
     margin-bottom: var(--space-4);
-    @apply .radius .shadow-md;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
   }
-  h2 { color: var(--color-primary); font-size: 1.75rem; margin-bottom: var(--space-2); }
+  h2 {
+    color: var(--color-primary);
+    font-size: 1.75rem;
+    margin-bottom: var(--space-2);
+  }
 
   /* Forms */
   form input, form textarea {
-    width: 100%; padding: var(--space-1);
+    width: 100%;
+    padding: var(--space-1);
     border: 1px solid #ccc;
-    @apply .radius;
+    border-radius: var(--radius);
     margin-bottom: var(--space-2);
   }
   form button {
@@ -136,9 +215,12 @@
     border: none;
     padding: var(--space-2) var(--space-4);
     color: #fff;
-    @apply .radius;
+    border-radius: var(--radius);
+    cursor: pointer;
   }
-  form button:hover { background: var(--color-primary-light); }
+  form button:hover {
+    background: var(--color-primary-light);
+  }
 
   /* Gallery */
   .gallery {
@@ -146,104 +228,31 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: var(--space-2);
   }
-  .gallery img { @apply .radius .shadow-sm; object-fit: cover; }
-
-  /* Quote slider */
-  #quotes-section {
-    position: relative; overflow: hidden;
-    text-align: center;
-  }
-  #quotes-section blockquote {
-    font-style: italic; font-size: 1.5rem;
-    opacity: 1;
-    animation: fade 10s infinite;
-    animation-fill-mode: both;
-  }
-  #quotes-section #quote-author {
-    font-weight: 600; color: var(--color-primary);
-    opacity: 1;
-    animation: fade 10s infinite 2s;
-    animation-fill-mode: both;
-  }
-  @keyframes fade {
-    0%, 20% { opacity: 0; transform: translateY(20px); }
-    25%, 45% { opacity: 1; transform: translateY(0); }
-    50%, 100% { opacity: 0; }
-  }
-
-  /* Back-to-top */
-  .back-to-top {
-    position: fixed; bottom: var(--space-4); right: var(--space-2);
-    padding: var(--space-2);
-    background: var(--color-primary);
-    color: #fff;
+  .gallery img {
     border-radius: var(--radius);
-    opacity: 0; transform: translateY(20px);
-    @apply .shadow-md;
-    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
-    z-index: 999;
-  }
-  .back-to-top.show { opacity: 0.8; transform: translateY(0); }
-  .back-to-top:hover { opacity: 1; transform: translateY(-3px); }
-
-  /* Responsive tweaks */
-  @media (max-width: 600px) {
-    nav { flex-direction: column; gap: var(--space-1); }
-    header img { width: 80px; }
-    .gallery { grid-template-columns: 1fr; }
+    box-shadow: var(--shadow-sm);
+    object-fit: cover;
   }
 
-  /* Footer */
-  footer {
-    background: #f2f6fc;
-    text-align: center;
-    padding: var(--space-2);
-    color: #555;
-  }
-  .social-icons a i {
-    font-size: 1.75rem;
-    filter: grayscale(100%);
-    transition: filter var(--transition-duration) var(--ease), transform var(--transition-duration) var(--ease);
-  }
-  .social-icons a:hover i { filter: none; transform: scale(1.2); color: var(--color-accent); }
-/* Lightbox modal */
-.lightbox-modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s ease;
-
-  /* 1. Back‑to‑top button styling */
-  .back-to-top {
-    position: fixed;
-    bottom: var(--space-4);
-    right: var(--space-2);
-    width: var(--space-4);
-    height: var(--space-4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: var(--color-primary);
-    color: #fff;
-    font-size: 1.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    @apply .shadow-md;
-    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
-    z-index: 999;
-  }
-
-  /* 2. Quote‑slider controls */
+  /* Quote Slider */
   #quotes-section {
     position: relative;
     overflow: hidden;
     text-align: center;
   }
-  #quotes-section .quote-controls {
+  #quotes-section blockquote {
+    font-style: italic;
+    font-size: 1.5rem;
+    opacity: 1;
+    animation: fade 10s infinite both;
+  }
+  #quotes-section #quote-author {
+    font-weight: 600;
+    color: var(--color-primary);
+    opacity: 1;
+    animation: fade 10s infinite both 2s;
+  }
+  .quote-controls {
     position: absolute;
     top: 50%;
     width: 100%;
@@ -252,24 +261,83 @@
     transform: translateY(-50%);
     pointer-events: none;
   }
-  #quotes-section .quote-controls button {
+  .quote-controls button {
+    all: unset;
     pointer-events: all;
-    background: var(--color-primary-light);
-    border: none;
-    border-radius: var(--radius);
-    padding: var(--space-1);
-    color: #fff;
-    font-size: 1.25rem;
-    opacity: 0.6;
-    transition: opacity var(--transition-duration) var(--ease), transform var(--transition-duration) var(--ease);
+    cursor: pointer;
   }
-  #quotes-section .quote-controls button:hover {
-    opacity: 1;
-    transform: scale(1.1);
+  .quote-controls .prev {
+    left: 1rem;
+  }
+  .quote-controls .next {
+    right: 1rem;
+  }
+  .quote-controls .prev::before {
+    content: '←';
+  }
+  .quote-controls .next::before {
+    content: '→';
+  }
+  @keyframes fade {
+    0%,20% { opacity: 0; transform: translateY(20px); }
+    25%,45% { opacity: 1; transform: translateY(0); }
+    50%,100% { opacity: 0; }
   }
 
-  /* 3. Lightbox modal enhancements */
-  .lightbox-modal .lightbox-close {
+  /* Responsive */
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    header img {
+      width: 80px;
+    }
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Footer */
+  footer {
+    background: var(--color-bg);
+    text-align: center;
+    padding: var(--space-2);
+    color: #555;
+  }
+  .social-icons a i {
+    font-size: 1.75rem;
+    filter: grayscale(100%);
+    transition:
+      filter var(--transition-duration) var(--ease),
+      transform var(--transition-duration) var(--ease);
+  }
+  .social-icons a:hover i {
+    filter: none;
+    transform: scale(1.2);
+    color: var(--color-accent);
+  }
+
+  /* Lightbox Modal */
+  .lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .lightbox-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lightbox-close {
     position: absolute;
     top: var(--space-2);
     right: var(--space-2);
@@ -278,33 +346,19 @@
     border-radius: 50%;
     font-size: 2rem;
     color: #fff;
+    cursor: pointer;
   }
-  .lightbox-modal .lightbox-image {
+  .lightbox-image {
     max-width: 90%;
     max-height: 90%;
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
   }
-
-
-}
-.lightbox-modal.show {
-  opacity: 1; pointer-events: auto;
-}
-.lightbox-image {
-  max-width: 90%; max-height: 90%;
-  border-radius: var(--radius);
-}
-.lightbox-close {
-  position: absolute;
-  top: var(--space-2); right: var(--space-2);
-  font-size: 2rem; color: #fff;
-  cursor: pointer;
-}
-.lightbox-caption {
-  position: absolute;
-  bottom: var(--space-4);
-  color: #fff;
-  font-size: 1.2rem;
-  text-align: center;
+  .lightbox-caption {
+    position: absolute;
+    bottom: var(--space-4);
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+  }
 }
