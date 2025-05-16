@@ -313,15 +313,16 @@ footer {
   gap: var(--space-m);
   margin: var(--space-s) 0;
 }
-.social-icons a img {
-  width: 28px;
-  height: 28px;
+/* replace the img selector with an i selector */
+.social-icons a i {
+  font-size: 28px;
   filter: grayscale(100%);
   transition: filter 0.3s, transform 0.3s;
 }
-.social-icons a:hover img {
+.social-icons a:hover i {
   filter: none;
   transform: scale(1.1);
+  color: var(--color-accent); /* optional: tint them on hover */
 }
 
 /* Responsive */
