@@ -77,7 +77,7 @@
   header img {
     width: clamp(80px, 10vw, 100px);
     margin-bottom: var(--space-2);
-    @apply .radius .shadow-md; /* Using utility layering */
+    @apply .radius .shadow-md;
   }
   header h1 { font-size: clamp(2rem, 5vw, 2.5rem); margin: var(--space-1) 0; }
   header p { font-size: 1.1rem; margin: 0; }
@@ -157,11 +157,15 @@
   }
   #quotes-section blockquote {
     font-style: italic; font-size: 1.5rem;
-    opacity: 0; animation: fade 10s infinite;
+    opacity: 1;
+    animation: fade 10s infinite;
+    animation-fill-mode: both;
   }
   #quotes-section #quote-author {
     font-weight: 600; color: var(--color-primary);
-    opacity: 0; animation: fade 10s infinite 2s;
+    opacity: 1;
+    animation: fade 10s infinite 2s;
+    animation-fill-mode: both;
   }
   @keyframes fade {
     0%, 20% { opacity: 0; transform: translateY(20px); }
