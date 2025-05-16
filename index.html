@@ -1,77 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Run4Ricky Foundation - Home</title>
 
+  <!-- Lazy‑load Font Awesome -->
   <link
-    rel="stylesheet"
+    rel="preload"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-p0xIcTBXVfvI0/VwZ8OWXfAnHNxC6jT66mf6ZLQTse5nG4DxDujJ4k3ldyp8i51KGxBnqXQUhBn73Bbq0hZTbg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-p0xIcTBXVfvI0/VwZ8OWXfAnHNxC6jT66mf6ZLQTse5nG4DxDujJ4k3ldyp8i51KGxBnqXQUhBn73Bbq0hZTbg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </noscript>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Your main CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Run4Ricky Foundation Logo">
-    <h1>Run4Ricky Foundation</h1>
-    <p>Empowering lives through awareness, support, and inclusion.</p>
-  </header>
+  <!-- … your header, nav, main content, etc. … -->
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="story.html">Story</a>
-    <a href="media.html">Media</a>
-    <a href="events-newsletter.html">Events & Newsletter</a>
-    <a href="donate.html">Donate</a>
-    <a href="disabled-living.html">Disabled Living</a>
-  </nav>
-
-  <main>
-    <section>
-      <h2>About Run4Ricky</h2>
-      <p>Run4Ricky is a movement to promote awareness and inclusion for individuals with disabilities. We believe in a future where everyone can thrive, no matter their ability.</p>
-    </section>
-
-    <section>
-      <h2>Our Mission</h2>
-      <p>Through advocacy, education, and community events, we aim to create equal opportunities and support networks for disabled individuals and their families. Our mission is rooted in compassion, dignity, and a belief that everyone deserves access to resources, inclusion, and a chance to thrive.</p>
-    </section>
-
-    <section>
-      <h2>Testimonials</h2>
-      <blockquote>
-        “Smile and keep on running .” — <strong>Riccardo B.</strong>
-      </blockquote>
-    </section>
-
-    <section>
-      <h2>Share Your Testimonial</h2>
-      <form action="mailto:contact@run4ricky.org" method="POST">
-        <label for="name" class="sr-only">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="Your Name" required>
-
-        <label for="testimonial" class="sr-only">Your Testimonial</label>
-        <textarea id="testimonial" name="testimonial" rows="4" placeholder="Your Testimonial..." required></textarea>
-
-        <button type="submit">Submit</button>
-      </form>
-    </section>
-  </main>
-
- <footer>
+  <footer>
     <section>
       <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:contact@run4ricky.org">contact@run4ricky.org</a></p>
-      <div class="social-icons" aria-label="Follow us">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      </div>
+      <p>
+        Email:
+        <a href="mailto:contact@run4ricky.org">contact@run4ricky.org</a>
+      </p>
+
+      <!-- Semantic nav for social links -->
+      <nav class="social-icons" aria-label="Follow us on social media">
+        <!-- Facebook (update URL if/when you have a page) -->
+        <a
+          href="#"
+          title="Visit our Facebook page"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <i class="fab fa-facebook-f"></i>
+          <span class="sr-only">Facebook</span>
+        </a>
+
+        <!-- Instagram -->
+        <a
+          href="https://www.instagram.com/run4riccardo/"
+          title="Follow us on Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+          <span class="sr-only">Instagram</span>
+        </a>
+
+        <!-- Twitter (remove or update if unused) -->
+        <a
+          href="#"
+          title="Follow us on Twitter"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Twitter"
+        >
+          <i class="fab fa-twitter"></i>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </nav>
+
       <p>&copy; 2025 Run4Ricky Foundation</p>
     </section>
   </footer>
