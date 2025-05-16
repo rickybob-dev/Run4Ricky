@@ -1,5 +1,3 @@
-/* style.css - Refactored, dynamic, and DRY fundraising page for Run4Ricky Foundation */
-
 @layer variables {
   :root {
     /* Color palette */
@@ -217,6 +215,78 @@
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none;
   transition: opacity 0.3s ease;
+
+  /* 1. Back‑to‑top button styling */
+  .back-to-top {
+    position: fixed;
+    bottom: var(--space-4);
+    right: var(--space-2);
+    width: var(--space-4);
+    height: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    @apply .shadow-md;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+    z-index: 999;
+  }
+
+  /* 2. Quote‑slider controls */
+  #quotes-section {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  #quotes-section .quote-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  #quotes-section .quote-controls button {
+    pointer-events: all;
+    background: var(--color-primary-light);
+    border: none;
+    border-radius: var(--radius);
+    padding: var(--space-1);
+    color: #fff;
+    font-size: 1.25rem;
+    opacity: 0.6;
+    transition: opacity var(--transition-duration) var(--ease), transform var(--transition-duration) var(--ease);
+  }
+  #quotes-section .quote-controls button:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  /* 3. Lightbox modal enhancements */
+  .lightbox-modal .lightbox-close {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    background: rgba(0,0,0,0.5);
+    padding: var(--space-1);
+    border-radius: 50%;
+    font-size: 2rem;
+    color: #fff;
+  }
+  .lightbox-modal .lightbox-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+  }
+
+
 }
 .lightbox-modal.show {
   opacity: 1; pointer-events: auto;
@@ -237,5 +307,4 @@
   color: #fff;
   font-size: 1.2rem;
   text-align: center;
-}
 }
