@@ -1,6 +1,3 @@
-// script.js - Interactive enhancements for Run4Ricky Foundation site
-
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
   setActiveNav();
   initBackToTop();
@@ -14,8 +11,7 @@ function setActiveNav() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
   navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage) {
+    if (link.getAttribute('href') === currentPage) {
       link.setAttribute('aria-current', 'page');
     }
   });
@@ -42,7 +38,7 @@ function initBackToTop() {
   });
 }
 
-// 3. Quotes slider for the Inspiring Quotes & Advice section
+// 3. Quotes slider with dynamic next/prev controls
 function initQuotesSlider() {
   const section = document.getElementById('quotes-section');
   if (!section) return;
@@ -60,13 +56,26 @@ function initQuotesSlider() {
   let currentIndex = 0;
   const quoteTextEl = document.getElementById('quote-text');
   const quoteAuthorEl = document.getElementById('quote-author');
-  const nextBtn = document.getElementById('next');
-  const prevBtn = document.getElementById('prev');
+
+  // Create controls container
+  const controls = document.createElement('div');
+  controls.className = 'quote-controls';
+  const prevBtn = document.createElement('button');
+  prevBtn.id = 'prev';
+  prevBtn.setAttribute('aria-label', 'Previous quote');
+  prevBtn.textContent = '‹';
+  const nextBtn = document.createElement('button');
+  nextBtn.id = 'next';
+  nextBtn.setAttribute('aria-label', 'Next quote');
+  nextBtn.textContent = '›';
+  controls.appendChild(prevBtn);
+  controls.appendChild(nextBtn);
+  section.appendChild(controls);
 
   function showQuote() {
     const { text, author } = quotes[currentIndex];
     quoteTextEl.textContent = `“${text}”`;
-    quoteAuthorEl.textContent = `— ${author}`;
+    quoteAuthorEl.textContent = `— ${author}`;
   }
 
   // Automatic rotation every 10 seconds
@@ -89,12 +98,11 @@ function initQuotesSlider() {
   showQuote();
 }
 
-// 4. Lightbox gallery for images
+// 4. Lightbox gallery for images (unchanged logic, styles updated)
 function initGalleryLightbox() {
   const images = document.querySelectorAll('.gallery img');
   if (!images.length) return;
 
-  // Create modal structure
   const modal = document.createElement('div');
   modal.className = 'lightbox-modal';
   modal.innerHTML = `
@@ -108,7 +116,6 @@ function initGalleryLightbox() {
   const caption = modal.querySelector('.lightbox-caption');
   const closeBtn = modal.querySelector('.lightbox-close');
 
-  // Open modal on image click
   images.forEach(img => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', () => {
@@ -118,7 +125,6 @@ function initGalleryLightbox() {
     });
   });
 
-  // Close mechanisms
   closeBtn.addEventListener('click', () => modal.classList.remove('show'));
   modal.addEventListener('click', e => {
     if (e.target === modal) modal.classList.remove('show');
