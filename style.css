@@ -110,10 +110,11 @@
 
   /* Main & Sections */
   main {
-    max-width: 900px;
-    margin-block: var(--space-lg) auto;
-    padding-inline: var(--space-sm);
-  }
+  max-width: 900px;
+  /* top/bottom = var(--space-lg); left/right = auto → centered */
+  margin: var(--space-lg) auto;
+  padding-inline: var(--space-sm);
+}
   section {
     background: var(--color-white);
     padding: var(--space-md);
