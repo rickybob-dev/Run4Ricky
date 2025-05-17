@@ -233,43 +233,36 @@
   text-align: center;
 }
 
+/* Quote Slider (minimal blank time) */
 #quotes-section blockquote,
 #quotes-section #quote-author {
   opacity: 0;
-  animation: quote-fade 5s infinite both;
+  animation: quote-fade 10s infinite both;
 }
 
-/* Remove the author delay so text & author animate together */
+/* Show author in sync with the quote */
 #quotes-section #quote-author {
   animation-delay: 0s;
 }
 
-/* Fade in at 20% → hold until 80% → fade out the last 15% */
 @keyframes quote-fade {
-  0%, 15% {
+  /* 0–5%: hidden
+     5–10%: fade in
+     10–90%: fully visible
+     90–95%: fade out
+     95–100%: hidden */
+  0%, 5% {
     opacity: 0;
     transform: translateY(20px);
   }
-  20%, 80% {
+  10%, 90% {
     opacity: 1;
     transform: translateY(0);
   }
-  85%, 100% {
+  95%, 100% {
     opacity: 0;
   }
 }
-  .quote-controls button {
-    all: unset;
-    pointer-events: all;
-    cursor: pointer;
-  }
-  .quote-controls .prev::before { content: '←'; }
-  .quote-controls .next::before { content: '→'; }
-  @keyframes quote-fade {
-    0%,20% { opacity: 0; transform: translateY(20px); }
-    25%,45% { opacity: 1; transform: translateY(0); }
-    50%,100% { opacity: 0; }
-  }
 
   /* Footer */
   footer {
