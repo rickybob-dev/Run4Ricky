@@ -4,7 +4,7 @@
 const CONFIG = {
   showAfter: 300,
   throttleWait: 100,
-  quoteInterval: 8000   // ↓ was 10000, now 8s
+  quoteInterval: 10000   // ↓ was 10000, now 8s
 };
 
 // Selectors
