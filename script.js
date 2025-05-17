@@ -1,17 +1,23 @@
-// script.js
+// Fully revised script.js
 
-// Configuration object for magic numbers
+// Configuration
 const CONFIG = {
-  showAfter: 300,
-  throttleWait: 100
+  showAfter: 300,         // px scrolled before showing back-to-top
+  quoteInterval: 10000    // ms between automatic quote swaps (via CSS animation)
 };
 
 // Selectors
 const SELECTORS = {
-  navLinks: 'nav a',
-  backToTopClass: 'back-to-top',
-  quotesSection: '#quotes-section',
-  galleryContainer: '.gallery'
+  navLinks:        'nav a[href^="#"]',
+  sections:        'main section[id]',
+  backToTop:       '.back-to-top',
+  fadeIn:          '.fade-in',
+  quotesSection:   '#quotes-section',
+  quoteText:       '#quote-text',
+  quoteAuthor:     '#quote-author',
+  quotePrev:       '#prev',
+  quoteNext:       '#next',
+  gallery:         '.gallery'
 };
 
 // Quotes data
@@ -21,71 +27,86 @@ const QUOTES = [
   { text: 'The only way to do great work is to love what you do.', author: 'Steve Jobs' },
   { text: 'It does not matter how slowly you go as long as you do not stop.', author: 'Confucius' },
   { text: 'Dream it. Wish it. Do it.', author: 'Unknown' },
-  { text: 'Challenges are what make life interesting; overcoming them is what makes life meaningful.', author: 'Joshua J. Marine' },
+  { text: 'Challenges are what make life interesting; overcoming... is what makes life meaningful.', author: 'Joshua J. Marine' },
   { text: 'Don’t watch the clock; do what it does. Keep going.', author: 'Sam Levenson' }
 ];
 
-// Initialize site once DOM is loaded
-const initSite = () => {
-  highlightCurrentNav();
-  initBackToTop();
-  initQuotesSlider();
-  initGalleryLightbox();
-};
+// Bootstrap
 document.addEventListener('DOMContentLoaded', initSite);
 
-// Highlight active navigation link
-const highlightCurrentNav = () => {
-  const links = document.querySelectorAll(SELECTORS.navLinks);
-  const current = window.location.pathname.split('/').pop() || 'index.html';
+function initSite() {
+  highlightCurrentNav();
+  initBackToTop();
+  initSectionReveals();
+  initQuotesSlider();
+  initGalleryLightbox();
+}
 
-  links.forEach(link => {
-    link.getAttribute('href') === current
-      ? link.setAttribute('aria-current', 'page')
-      : link.removeAttribute('aria-current');
+// Highlight nav links based on scroll position
+function highlightCurrentNav() {
+  const sections = document.querySelectorAll(SELECTORS.sections);
+  const links    = document.querySelectorAll(SELECTORS.navLinks);
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.target.id) return;
+      const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+      if (entry.isIntersecting) {
+        links.forEach(l => l.removeAttribute('aria-current'));
+        link && link.setAttribute('aria-current', 'page');
+      }
+    });
+  }, { threshold: 0.6 });
+
+  sections.forEach(sec => io.observe(sec));
+}
+
+// Back-to-top button
+function initBackToTop() {
+  const btn = document.querySelector(SELECTORS.backToTop);
+  if (!btn) return;
+
+  // Sentinel to observe scroll
+  const sentinel = document.createElement('div');
+  sentinel.style.position = 'absolute';
+  sentinel.style.top      = `${CONFIG.showAfter}px`;
+  document.body.prepend(sentinel);
+
+  const io = new IntersectionObserver(([e]) => {
+    btn.classList.toggle('show', !e.isIntersecting);
   });
-};
+  io.observe(sentinel);
 
-// Throttle utility
-const throttle = (fn, wait = CONFIG.throttleWait) => {
-  let last = 0;
-  return (...args) => {
-    const now = Date.now();
-    if (now - last >= wait) {
-      fn(...args);
-      last = now;
-    }
-  };
-};
+  btn.addEventListener('click', () => window.scrollTo({ top: 0 }));
+}
 
-// Back-to-top button with passive scroll listener
-const initBackToTop = () => {
-  const btn = document.createElement('button');
-  btn.className = SELECTORS.backToTopClass;
-  btn.setAttribute('aria-label', 'Back to top');
-  btn.textContent = '⇧';
-  document.body.appendChild(btn);
+// Reveal sections on scroll
+function initSectionReveals() {
+  const secs = document.querySelectorAll(SELECTORS.sections);
+  secs.forEach(s => s.classList.add('fade-in'));
 
-  const toggleVisibility = () => {
-    btn.classList.toggle('show', window.scrollY > CONFIG.showAfter);
-  };
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting) {
+        target.classList.add('is-visible');
+        obs.unobserve(target);
+      }
+    });
+  }, { threshold: 0.1 });
 
-  window.addEventListener('scroll', throttle(toggleVisibility), { passive: true });
-  btn.addEventListener('click', () =>
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  );
-};
+  secs.forEach(s => io.observe(s));
+}
 
-// Quotes slider with CSS-driven swap on animationiteration
-const initQuotesSlider = () => {
+// Quotes slider with CSS-driven animation
+function initQuotesSlider() {
   const section = document.querySelector(SELECTORS.quotesSection);
   if (!section) return;
 
+  const textEl   = section.querySelector(SELECTORS.quoteText);
+  const authorEl = section.querySelector(SELECTORS.quoteAuthor);
+  const prevBtn  = section.querySelector(SELECTORS.quotePrev);
+  const nextBtn  = section.querySelector(SELECTORS.quoteNext);
   let index = 0;
-  const textEl   = section.querySelector('#quote-text');
-  const authorEl = section.querySelector('#quote-author');
-  const prevBtn  = section.querySelector('#prev');
-  const nextBtn  = section.querySelector('#next');
 
   function showQuote() {
     const { text, author } = QUOTES[index];
@@ -103,127 +124,100 @@ const initQuotesSlider = () => {
     showQuote();
   }
 
-  // Button controls
-  prevBtn.addEventListener('click', showPrev);
-  nextBtn.addEventListener('click', showNext);
-
-  // Initial render
   showQuote();
-
-  // Swap on CSS animation loop
+  nextBtn.addEventListener('click', showNext);
+  prevBtn.addEventListener('click', showPrev);
   textEl.addEventListener('animationiteration', showNext);
-};
 
-// Create quote controls without innerHTML (if used elsewhere)
-export const createControls = () => {
-  const container = document.createElement('div');
-  container.className = 'quote-controls';
-
-  ['prev', 'next'].forEach(dir => {
-    const btn = document.createElement('button');
-    btn.className = dir;
-    btn.setAttribute('aria-label', dir === 'prev' ? 'Previous quote' : 'Next quote');
-    btn.textContent = dir === 'prev' ? '←' : '→';
-    container.appendChild(btn);
+  // Pause/resume on visibility
+  const ioq = new IntersectionObserver(([e]) => {
+    const paused = !e.isIntersecting;
+    [textEl, authorEl].forEach(el => el.style.animationPlayState = paused ? 'paused' : 'running');
   });
+  ioq.observe(section);
 
-  return container;
-};
+  // Pause/resume on hover
+  section.addEventListener('mouseenter', () => [textEl, authorEl].forEach(el => el.style.animationPlayState = 'paused'));
+  section.addEventListener('mouseleave', () => [textEl, authorEl].forEach(el => el.style.animationPlayState = 'running'));
+}
 
-// Create a lightbox once (factory)
-export const createLightbox = () => {
+// Accessibility: trap focus within an element
+function trapFocus(element) {
+  const focusable = Array.from(
+    element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+  );
+  if (!focusable.length) return () => {};
+  const first = focusable[0];
+  const last  = focusable[focusable.length - 1];
+
+  function handleTab(e) {
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
+  element.addEventListener('keydown', handleTab);
+  return () => element.removeEventListener('keydown', handleTab);
+}
+
+// Gallery lightbox
+function initGalleryLightbox() {
+  const gallery = document.querySelector(SELECTORS.gallery);
+  if (!gallery) return;
+
+  // Build modal
   const modal = document.createElement('div');
   modal.className = 'lightbox-modal';
   modal.setAttribute('role', 'dialog');
   modal.setAttribute('aria-modal', 'true');
   modal.setAttribute('aria-hidden', 'true');
-  modal.style.display = 'none';
 
-  const closeBtn = document.createElement('span');
+  const closeBtn = document.createElement('button');
   closeBtn.className = 'lightbox-close';
   closeBtn.setAttribute('aria-label', 'Close');
-  closeBtn.tabIndex = 0;
-  closeBtn.textContent = '×';
+  closeBtn.innerHTML = '&times;';
 
-  const imgEl = document.createElement('img');
-  imgEl.className = 'lightbox-image';
-  imgEl.alt = '';
-  imgEl.setAttribute('aria-hidden', 'true');
+  const img     = document.createElement('img');
+  img.className = 'lightbox-image';
+  img.setAttribute('alt', '');
+  img.setAttribute('aria-hidden', 'true');
 
-  const captionEl = document.createElement('div');
-  captionEl.className = 'lightbox-caption';
+  const caption = document.createElement('div');
+  caption.className = 'lightbox-caption';
 
-  modal.append(closeBtn, imgEl, captionEl);
+  modal.append(closeBtn, img, caption);
   document.body.appendChild(modal);
 
-  return { modal, img: imgEl, caption: captionEl, closeBtn };
-};
+  let restoreFocus = null;
 
-// Focus trap utility
-export const trapFocus = (element) => {
-  const focusable = Array.from(
-    element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
-  );
-  const first = focusable[0];
-  const last = focusable[focusable.length - 1];
-
-  const handleTab = (e) => {
-    if (e.key !== 'Tab') return;
-    if (e.shiftKey) {
-      if (document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      }
-    } else {
-      if (document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    }
-  };
-
-  element.addEventListener('keydown', handleTab);
-  return () => element.removeEventListener('keydown', handleTab);
-};
-
-// Initialize gallery lightbox with event delegation and accessibility
-export const initGalleryLightbox = () => {
-  const gallery = document.querySelector(SELECTORS.galleryContainer);
-  if (!gallery) return;
-
-  const { modal, img, caption, closeBtn } = createLightbox();
-  let restoreFocus;
-  let lastFocused;
-
-  const openLightbox = (targetImg) => {
-    lastFocused = document.activeElement;
-    img.src = targetImg.src;
-    caption.textContent = targetImg.alt || '';
+  function openLightbox(target) {
+    restoreFocus = trapFocus(modal);
+    img.src = target.src;
+    caption.textContent = target.alt || '';
     img.setAttribute('aria-hidden', 'false');
     modal.setAttribute('aria-hidden', 'false');
-    modal.style.display = 'block';
-    restoreFocus = trapFocus(modal);
+    modal.classList.add('show');
     closeBtn.focus();
-  };
+  }
 
-  const closeLightbox = () => {
+  function closeLightbox() {
     modal.setAttribute('aria-hidden', 'true');
-    modal.style.display = 'none';
+    modal.classList.remove('show');
     img.src = '';
     img.setAttribute('aria-hidden', 'true');
     restoreFocus && restoreFocus();
-    lastFocused && lastFocused.focus();
-  };
+  }
 
-  gallery.addEventListener('click', (e) => {
-    const target = e.target.closest('img');
-    if (!target) return;
-    openLightbox(target);
+  gallery.addEventListener('click', e => {
+    const imgEl = e.target.closest('img');
+    imgEl && openLightbox(imgEl);
   });
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal || e.target === closeBtn) {
-      closeLightbox();
-    }
-  });
-};
+  closeBtn.addEventListener('click', closeLightbox);
+  modal.addEventListener('click', e => e.target === modal && closeLightbox());
+  document.addEventListener('keydown', e => e.key === 'Escape' && modal.classList.contains('show') && closeLightbox());
+}
