@@ -233,32 +233,25 @@
   text-align: center;
 }
 
-/* Quote Slider (minimal blank time) */
-/* Quote Slider (minimal blank time, extended visibility) */
 #quotes-section blockquote,
 #quotes-section #quote-author {
-  opacity: 0;
-  /* keep a 10 s cycle but swap more of it into “visible” time */
-  animation: quote-fade 8s infinite both;
+  opacity: 1;
+  animation: quote-fade 10s infinite both;
 }
 
 @keyframes quote-fade {
-  /* 0–3%: completely hidden */
-  0%, 3% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  /* 5–95%: fully visible */
-  5%, 95% {
+  /* 0–80%: fully visible */
+  0%, 80% {
     opacity: 1;
     transform: translateY(0);
   }
-  /* 97–100%: fade out to hidden */
-  97%, 100% {
+  /* 90–100%: fade out to hidden */
+  90%, 100% {
     opacity: 0;
     transform: translateY(20px);
   }
 }
+
 
 
   /* Footer */
