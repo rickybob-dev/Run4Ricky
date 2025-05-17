@@ -194,6 +194,12 @@
     opacity: 0;
     animation: fade-in 10s infinite both;
   }
+   ul, ol {
+    text-align: left;
+    list-style-position: outside;
+    margin-inline-start: var(--space-lg);
+    padding-inline-start: var(--space-md);
+  }
   @keyframes fade-in {
     0%, 80% { opacity: 1; transform: translateY(0); }
     90%,100% { opacity: 0; transform: translateY(20px); }
