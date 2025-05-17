@@ -1,4 +1,4 @@
-/* Updated style.css - cohesive, streamlined, synced with script.js */
+/* style.css — Cleaned & Improved */
 
 @layer variables {
   :root {
@@ -45,31 +45,45 @@
   a, button { all: unset; cursor: pointer; }
   a { text-decoration: none; }
   img, video, iframe { display: block; max-width: 100%; height: auto; }
-  :focus { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
 }
 
 @layer utilities {
-  .radius   { border-radius: var(--radius); }
-  .shadow-sm{ box-shadow: var(--shadow-sm); }
-  .shadow-md{ box-shadow: var(--shadow-md); }
-  .anim     { transition: all var(--duration) var(--ease); }
+  .radius    { border-radius: var(--radius); }
+  .shadow-sm { box-shadow: var(--shadow-sm); }
+  .shadow-md { box-shadow: var(--shadow-md); }
+  .anim      { transition: all var(--duration) var(--ease); }
+
+  /* Scroll-reveal */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
+  }
+  .fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @layer components {
   /* Header & Logo */
   header {
     text-align: center;
-    padding: var(--space-lg) 0;
+    padding-block: var(--space-lg) 0;
   }
- header img {
-  width: clamp(80px,10vw,100px);
-  margin: 0 auto var(--space-sm);    /* ← top:0, left/right:auto, bottom:var(--space-sm) */
-  border: 3px solid rgba(255,255,255,0.8);
-  border-radius: 50%;
-  box-shadow: var(--shadow-md);
-  transition: transform var(--duration) var(--ease);
-}
-
+  header img {
+    width: clamp(80px, 10vw, 100px);
+    margin-block-end: var(--space-sm);
+    margin-inline: auto;
+    border: 3px solid rgba(255,255,255,0.8);
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--duration) var(--ease);
+  }
   header img:hover { transform: rotate(-5deg) scale(1.05); }
 
   /* Navigation */
@@ -80,7 +94,7 @@
     display: flex;
     justify-content: center;
     gap: var(--space-md);
-    padding: var(--space-sm) 0;
+    padding-block: var(--space-sm) 0;
     box-shadow: var(--shadow-sm);
     z-index: 1000;
   }
@@ -97,23 +111,23 @@
   /* Main & Sections */
   main {
     max-width: 900px;
-    margin: var(--space-lg) auto;
-    padding: 0 var(--space-sm);
+    margin-block: var(--space-lg) auto;
+    padding-inline: var(--space-sm);
   }
   section {
     background: var(--color-white);
     padding: var(--space-md);
-    margin-bottom: var(--space-lg);
+    margin-block-end: var(--space-lg);
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
   }
   h2 {
     color: var(--color-primary);
     font-size: 1.75rem;
-    margin-bottom: var(--space-sm);
+    margin-block-end: var(--space-sm);
   }
 
-  /* Buttons & CTAs */
+  /* Buttons */
   .btn, .button {
     display: inline-block;
     padding: var(--space-xs) var(--space-md);
@@ -167,7 +181,7 @@
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding: var(--space-md);
+    padding-block: var(--space-md);
   }
   #quote-text, #quote-author {
     opacity: 0;
@@ -181,7 +195,7 @@
     display: flex;
     justify-content: center;
     gap: var(--space-sm);
-    margin-top: var(--space-sm);
+    margin-block-start: var(--space-sm);
   }
   .quote-controls button {
     all: unset;
@@ -243,7 +257,7 @@
     padding: var(--space-xs);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    margin-bottom: var(--space-sm);
+    margin-block-end: var(--space-sm);
   }
   form button {
     all: unset;
@@ -260,11 +274,11 @@
   footer {
     background: var(--color-bg);
     text-align: center;
-    padding: var(--space-sm);
+    padding-block: var(--space-sm);
     color: #555;
   }
   .social-icons a {
-    margin: 0 var(--space-xs);
+    margin-inline: var(--space-xs);
     font-size: 1.75rem;
     filter: grayscale(100%);
     transition: transform var(--duration) var(--ease), color var(--duration) var(--ease);
@@ -276,14 +290,14 @@
 }
 
 @layer dark-mode {
-  .dark-mode body {
+  [data-theme="dark"] body {
     background: var(--color-bg-dark);
     color: var(--color-text-dark);
   }
-  .dark-mode header,
-  .dark-mode nav,
-  .dark-mode main section,
-  .dark-mode footer {
+  [data-theme="dark"] header,
+  [data-theme="dark"] nav,
+  [data-theme="dark"] main section,
+  [data-theme="dark"] footer {
     background: #1e1e1e;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
   }
