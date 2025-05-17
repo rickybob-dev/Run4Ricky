@@ -234,35 +234,32 @@
 }
 
 /* Quote Slider (minimal blank time) */
+/* Quote Slider (minimal blank time, extended visibility) */
 #quotes-section blockquote,
 #quotes-section #quote-author {
   opacity: 0;
-  animation: quote-fade 10s infinite both;
-}
-
-/* Show author in sync with the quote */
-#quotes-section #quote-author {
-  animation-delay: 0s;
+  /* keep a 10 s cycle but swap more of it into “visible” time */
+  animation: quote-fade 8s infinite both;
 }
 
 @keyframes quote-fade {
-  /* 0–5%: hidden
-     5–10%: fade in
-     10–90%: fully visible
-     90–95%: fade out
-     95–100%: hidden */
-  0%, 5% {
+  /* 0–3%: completely hidden */
+  0%, 3% {
     opacity: 0;
     transform: translateY(20px);
   }
-  10%, 90% {
+  /* 5–95%: fully visible */
+  5%, 95% {
     opacity: 1;
     transform: translateY(0);
   }
-  95%, 100% {
+  /* 97–100%: fade out to hidden */
+  97%, 100% {
     opacity: 0;
+    transform: translateY(20px);
   }
 }
+
 
   /* Footer */
   footer {
