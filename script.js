@@ -3,8 +3,7 @@
 // Configuration object for magic numbers
 const CONFIG = {
   showAfter: 300,
-  throttleWait: 100,
-  quoteInterval: 10000   // ↓ was 10000, now 8s
+  throttleWait: 100
 };
 
 // Selectors
@@ -77,38 +76,45 @@ const initBackToTop = () => {
   );
 };
 
-// Quotes slider with cached DOM lookups and interval cleanup
+// Quotes slider with CSS-driven swap on animationiteration
 const initQuotesSlider = () => {
-  const section = document.querySelector('#quotes-section');
+  const section = document.querySelector(SELECTORS.quotesSection);
   if (!section) return;
 
   let index = 0;
   const textEl   = section.querySelector('#quote-text');
   const authorEl = section.querySelector('#quote-author');
-  // grab the buttons you put in the HTML
   const prevBtn  = section.querySelector('#prev');
   const nextBtn  = section.querySelector('#next');
-
-  prevBtn.addEventListener('click', showPrev);
-  nextBtn.addEventListener('click', showNext);
-
-  // auto‑advance
-  setInterval(showNext, CONFIG.quoteInterval);
-
-  // populate for the first time
-  showQuote();
 
   function showQuote() {
     const { text, author } = QUOTES[index];
     textEl.textContent   = `“${text}”`;
     authorEl.textContent = `— ${author}`;
   }
-  function showNext() { index = (index + 1) % QUOTES.length; showQuote(); }
-  function showPrev() { index = (index - 1 + QUOTES.length) % QUOTES.length; showQuote(); }
+
+  function showNext() {
+    index = (index + 1) % QUOTES.length;
+    showQuote();
+  }
+
+  function showPrev() {
+    index = (index - 1 + QUOTES.length) % QUOTES.length;
+    showQuote();
+  }
+
+  // Button controls
+  prevBtn.addEventListener('click', showPrev);
+  nextBtn.addEventListener('click', showNext);
+
+  // Initial render
+  showQuote();
+
+  // Swap on CSS animation loop
+  textEl.addEventListener('animationiteration', showNext);
 };
 
-
-// Create quote controls without innerHTML
+// Create quote controls without innerHTML (if used elsewhere)
 export const createControls = () => {
   const container = document.createElement('div');
   container.className = 'quote-controls';
