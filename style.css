@@ -233,24 +233,17 @@
   text-align: center;
 }
 
-#quotes-section blockquote,
+#quotes-section #quote-text,
 #quotes-section #quote-author {
   opacity: 1;
   animation: quote-fade 10s infinite both;
 }
 
 @keyframes quote-fade {
-  /* 0–80%: fully visible */
-  0%, 80% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  /* 90–100%: fade out to hidden */
-  90%, 100% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+  0%, 80%   { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(20px); }
 }
+
 
 
 
