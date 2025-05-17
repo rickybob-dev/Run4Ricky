@@ -115,6 +115,12 @@
   margin: var(--space-lg) auto;
   padding-inline: var(--space-sm);
 }
+  main {
+  max-width: 900px;
+  margin: var(--space-lg) auto;
+  padding-inline: var(--space-sm);
+  text-align: center;    /* ← add this */
+}
   section {
     background: var(--color-white);
     padding: var(--space-md);
