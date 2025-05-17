@@ -27,7 +27,7 @@ const QUOTES = [
 ];
 
 // Initialize site once DOM is loaded
-export const initSite = () => {
+const initSite = () => {
   highlightCurrentNav();
   initBackToTop();
   initQuotesSlider();
@@ -36,7 +36,7 @@ export const initSite = () => {
 document.addEventListener('DOMContentLoaded', initSite);
 
 // Highlight active navigation link
-export const highlightCurrentNav = () => {
+const highlightCurrentNav = () => {
   const links = document.querySelectorAll(SELECTORS.navLinks);
   const current = window.location.pathname.split('/').pop() || 'index.html';
 
@@ -48,7 +48,7 @@ export const highlightCurrentNav = () => {
 };
 
 // Throttle utility
-export const throttle = (fn, wait = CONFIG.throttleWait) => {
+const throttle = (fn, wait = CONFIG.throttleWait) => {
   let last = 0;
   return (...args) => {
     const now = Date.now();
@@ -60,7 +60,7 @@ export const throttle = (fn, wait = CONFIG.throttleWait) => {
 };
 
 // Back-to-top button with passive scroll listener
-export const initBackToTop = () => {
+const initBackToTop = () => {
   const btn = document.createElement('button');
   btn.className = SELECTORS.backToTopClass;
   btn.setAttribute('aria-label', 'Back to top');
@@ -78,38 +78,35 @@ export const initBackToTop = () => {
 };
 
 // Quotes slider with cached DOM lookups and interval cleanup
-export const initQuotesSlider = () => {
-  const section = document.querySelector(SELECTORS.quotesSection);
+const initQuotesSlider = () => {
+  const section = document.querySelector('#quotes-section');
   if (!section) return;
 
   let index = 0;
-  const textEl = section.querySelector('#quote-text');
+  const textEl   = section.querySelector('#quote-text');
   const authorEl = section.querySelector('#quote-author');
-  const controls = section.appendChild(createControls());
-  const [prevBtn, nextBtn] = Array.from(controls.querySelectorAll('button'));
+  // grab the buttons you put in the HTML
+  const prevBtn  = section.querySelector('#prev');
+  const nextBtn  = section.querySelector('#next');
 
   prevBtn.addEventListener('click', showPrev);
   nextBtn.addEventListener('click', showNext);
 
-  const intervalId = setInterval(showNext, CONFIG.quoteInterval);
-  // On tear-down, call clearInterval(intervalId)
+  // auto‑advance
+  setInterval(showNext, CONFIG.quoteInterval);
 
+  // populate for the first time
   showQuote();
 
   function showQuote() {
     const { text, author } = QUOTES[index];
-    textEl.textContent = `“${text}”`;
+    textEl.textContent   = `“${text}”`;
     authorEl.textContent = `— ${author}`;
   }
-  function showNext() {
-    index = (index + 1) % QUOTES.length;
-    showQuote();
-  }
-  function showPrev() {
-    index = (index - 1 + QUOTES.length) % QUOTES.length;
-    showQuote();
-  }
+  function showNext() { index = (index + 1) % QUOTES.length; showQuote(); }
+  function showPrev() { index = (index - 1 + QUOTES.length) % QUOTES.length; showQuote(); }
 };
+
 
 // Create quote controls without innerHTML
 export const createControls = () => {
