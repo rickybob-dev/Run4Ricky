@@ -227,22 +227,37 @@
     overflow: hidden;
     text-align: center;
   }
-  #quotes-section blockquote,
-  #quotes-section #quote-author {
+  #quotes-section {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+#quotes-section blockquote,
+#quotes-section #quote-author {
+  opacity: 0;
+  animation: quote-fade 10s infinite both;
+}
+
+/* Remove the author delay so text & author animate together */
+#quotes-section #quote-author {
+  animation-delay: 0s;
+}
+
+/* Fade in at 20% → hold until 80% → fade out the last 15% */
+@keyframes quote-fade {
+  0%, 15% {
     opacity: 0;
-    animation: quote-fade 10s infinite both;
+    transform: translateY(20px);
   }
-  #quotes-section blockquote { font-style: italic; font-size: 1.5rem; }
-  #quotes-section #quote-author { font-weight: 600; color: var(--color-primary); animation-delay: 2s; }
-  .quote-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    pointer-events: none;
+  20%, 80% {
+    opacity: 1;
+    transform: translateY(0);
   }
+  85%, 100% {
+    opacity: 0;
+  }
+}
   .quote-controls button {
     all: unset;
     pointer-events: all;
