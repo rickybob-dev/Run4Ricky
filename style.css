@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css - optimized and cleaned */
 
 @layer variables {
   :root {
@@ -31,16 +31,14 @@
     /* Breakpoints */
     --breakpoint-sm: 600px;
 
-    /* Logo styling */
+    /* Logo */
     --logo-border: 3px solid rgba(255, 255, 255, 0.8);
     --logo-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 }
 
 @layer base {
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+  *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
@@ -48,16 +46,15 @@
     background: var(--color-bg);
     color: var(--color-text);
   }
-  a, button { text-decoration: none; cursor: pointer; }
+  a, button { all: unset; text-decoration: none; cursor: pointer; }
   a:focus, button:focus, input:focus, textarea:focus {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
   }
-  img, video, iframe { max-width: 100%; display: block; }
+  img, video, iframe { display: block; max-width: 100%; }
 }
 
 @layer utilities {
-  /* Opt-in transition utility for interactive elements */
   .anim {
     transition:
       background-color var(--transition-duration) var(--ease),
@@ -71,7 +68,6 @@
 }
 
 @layer dark-mode {
-  /* Use .dark-mode class on <html> or <body> to toggle dark theme via JS */
   .dark-mode body {
     background: var(--color-bg-dark);
     color: var(--color-text-dark);
@@ -86,25 +82,24 @@
 }
 
 @layer components {
-  /* Logo */
+  /* Header & Logo */
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-3) 0;
+  }
   header img {
     width: clamp(80px, 10vw, 100px);
     margin-bottom: var(--space-2);
     border: var(--logo-border);
     border-radius: 50%;
     box-shadow: var(--logo-shadow);
+    transition: transform var(--transition-duration) var(--ease);
   }
-  header img:hover {
-    transform: rotate(-5deg) scale(1.05);
-  }
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    /* optional padding above/below */
-    padding: var(--space-3) 0;
-  }
+  header img:hover { transform: rotate(-5deg) scale(1.05); }
+
   /* Navigation */
   nav {
     position: sticky;
@@ -122,34 +117,25 @@ header {
     font-weight: 600;
     padding: var(--space-1) var(--space-2);
     border-radius: var(--radius);
+    transition: transform var(--transition-duration) var(--ease);
   }
-  nav a:hover {
-    transform: scale(1.1);
-  }
-  nav a[aria-current] {
-    border-bottom: 2px solid var(--color-accent);
-  }
+  nav a:hover { transform: scale(1.1); }
+  nav a[aria-current] { border-bottom: 2px solid var(--color-accent); }
 
   /* Buttons */
-  .btn {
+  .btn, .button {
     display: inline-block;
     padding: var(--space-1) var(--space-3);
     border-radius: var(--radius);
     font-weight: 600;
     background: var(--color-accent);
     color: var(--color-white);
+    transition: transform var(--transition-duration) var(--ease);
   }
-  .btn:hover {
-    transform: translateY(-3px) scale(1.05);
-  }
-  /* Alias for .btn */
-  .button {
-    @apply .btn;
-  }
+  .btn:hover, .button:hover { transform: translateY(-3px) scale(1.05); }
 
-  /* Arrow controls & Back to Top */
-  .arrow-btn,
-  .back-to-top {
+  /* Arrow & Back-to-Top Controls */
+  .arrow-btn, .back-to-top {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -161,15 +147,17 @@ header {
     box-shadow: var(--shadow-md);
     color: var(--color-white);
     font-size: 1.5rem;
-    /* Add .anim class in markup for smooth transitions */
+    transition: background var(--transition-duration) var(--ease),
+                transform var(--transition-duration) var(--ease),
+                box-shadow var(--transition-duration) var(--ease);
   }
-  .arrow-btn:hover,
-  .back-to-top:hover {
+  .arrow-btn:hover, .back-to-top:hover {
     background: var(--color-accent);
     transform: translateY(-3px) scale(1.1);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   }
   .back-to-top {
+    position: fixed;
     bottom: var(--space-4);
     right: var(--space-2);
     opacity: 0;
@@ -180,10 +168,7 @@ header {
     opacity: 0.85;
     transform: translateY(0);
   }
-  .back-to-top::before {
-    content: '⇧';
-    position: absolute;
-  }
+  .back-to-top::before { content: '⇧'; position: absolute; }
 
   /* Layout */
   main {
@@ -205,7 +190,8 @@ header {
   }
 
   /* Forms */
-  form input, form textarea {
+  form input,
+  form textarea {
     width: 100%;
     padding: var(--space-1);
     border: 1px solid var(--color-border-light);
@@ -219,10 +205,9 @@ header {
     color: var(--color-white);
     border-radius: var(--radius);
     cursor: pointer;
+    transition: background var(--transition-duration) var(--ease);
   }
-  form button:hover {
-    background: var(--color-primary-light);
-  }
+  form button:hover { background: var(--color-primary-light); }
 
   /* Gallery */
   .gallery {
@@ -242,18 +227,13 @@ header {
     overflow: hidden;
     text-align: center;
   }
-  #quotes-section blockquote {
-    font-style: italic;
-    font-size: 1.5rem;
-    opacity: 1;
+  #quotes-section blockquote,
+  #quotes-section #quote-author {
+    opacity: 0;
     animation: quote-fade 10s infinite both;
   }
-  #quotes-section #quote-author {
-    font-weight: 600;
-    color: var(--color-primary);
-    opacity: 1;
-    animation: quote-fade 10s infinite both 2s;
-  }
+  #quotes-section blockquote { font-style: italic; font-size: 1.5rem; }
+  #quotes-section #quote-author { font-weight: 600; color: var(--color-primary); animation-delay: 2s; }
   .quote-controls {
     position: absolute;
     top: 50%;
@@ -268,18 +248,8 @@ header {
     pointer-events: all;
     cursor: pointer;
   }
-  .quote-controls .prev {
-    left: 1rem;
-  }
-  .quote-controls .next {
-    right: 1rem;
-  }
-  .quote-controls .prev::before {
-    content: '←';
-  }
-  .quote-controls .next::before {
-    content: '→';
-  }
+  .quote-controls .prev::before { content: '←'; }
+  .quote-controls .next::before { content: '→'; }
   @keyframes quote-fade {
     0%,20% { opacity: 0; transform: translateY(20px); }
     25%,45% { opacity: 1; transform: translateY(0); }
@@ -296,31 +266,23 @@ header {
   .social-icons a i {
     font-size: 1.75rem;
     filter: grayscale(100%);
+    transition: transform var(--transition-duration) var(--ease), color var(--transition-duration) var(--ease);
   }
-  .social-icons a:hover i {
-    transform: scale(1.2);
-    color: var(--color-accent);
-  }
+  .social-icons a:hover i { transform: scale(1.2); color: var(--color-accent); }
 
-  /* Lightbox Modal */
+  /* Lightbox */
   .lightbox-modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.8);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-duration) var(--ease);
   }
-  .lightbox-modal.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  .lightbox-modal.show { opacity: 1; pointer-events: auto; }
   .lightbox-close {
     position: absolute;
     top: var(--space-2);
@@ -348,15 +310,8 @@ header {
 
   /* Responsive */
   @media (max-width: var(--breakpoint-sm)) {
-    nav {
-      flex-direction: column;
-      gap: var(--space-1);
-    }
-    header img {
-      width: 80px;
-    }
-    .gallery {
-      grid-template-columns: 1fr;
-    }
+    nav { flex-direction: column; gap: var(--space-1); }
+    header img { width: 80px; }
+    .gallery { grid-template-columns: 1fr; }
   }
 }
