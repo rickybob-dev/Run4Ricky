@@ -236,7 +236,7 @@
 #quotes-section blockquote,
 #quotes-section #quote-author {
   opacity: 0;
-  animation: quote-fade 10s infinite both;
+  animation: quote-fade 5s infinite both;
 }
 
 /* Remove the author delay so text & author animate together */
