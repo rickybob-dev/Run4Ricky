@@ -7,6 +7,7 @@
     showAfter: 300,         // px to scroll
     quoteInterval: 10000    // ms between quote swaps
   });
+
   const SELECTORS = {
     navLinks:      'nav a[href^="#"]',
     sections:      'main section[id]',
@@ -19,6 +20,13 @@
     gallery:       '.gallery',
     timelineItems: '.timeline li'
   };
+
+  const QUOTES = [
+    { text: 'The only limit to our realization of tomorrow is our doubts of today.', author: 'Franklin D. Roosevelt' },
+    { text: 'Life is what happens when you’re busy making other plans.', author: 'John Lennon' },
+    { text: 'Your time is limited, so don’t waste it living someone else’s life.', author: 'Steve Jobs' }
+    // Add more quotes as needed
+  ];
 
   document.addEventListener('DOMContentLoaded', () => {
     try {
@@ -123,6 +131,7 @@
     sec.addEventListener('mouseenter', () => [textEl, authorEl].forEach(el => el.style.animationPlayState = 'paused'));
     sec.addEventListener('mouseleave', () => [textEl, authorEl].forEach(el => el.style.animationPlayState = 'running'));
   }
+
   function trapFocus(el) {
     const focusable = Array.from(el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
     if (!focusable.length) return () => {};
