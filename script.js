@@ -17,6 +17,7 @@
     quotePrev:     '#prev',
     quoteNext:     '#next',
     gallery:       '.gallery'
+    timelineItems: '.timeline li'
   };
   const QUOTES = Object.freeze([
     { text: 'Smile and keep on running.', author: 'Riccardo B.' },
@@ -42,6 +43,7 @@
     initSectionReveals();
     initQuotesSlider();
     initGalleryLightbox();
+    initTimeline();   
   }
 
   function highlightCurrentNav() {
@@ -59,6 +61,21 @@
     }, { threshold: 0.6 });
     sections.forEach(s => io.observe(s));
   }
+function initTimeline() {
+  const items = document.querySelectorAll(SELECTORS.timelineItems);
+  if (!items.length) return;
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  items.forEach(item => io.observe(item));
+}
 
   function initBackToTop() {
     const btn = document.querySelector(SELECTORS.backToTop);
