@@ -16,18 +16,9 @@
     quoteAuthor:   '#quote-author',
     quotePrev:     '#prev',
     quoteNext:     '#next',
-    gallery:       '.gallery'
+    gallery:       '.gallery',
     timelineItems: '.timeline li'
   };
-  const QUOTES = Object.freeze([
-    { text: 'Smile and keep on running.', author: 'Riccardo B.' },
-    { text: 'Your limitation—it’s only your imagination.', author: 'Unknown' },
-    { text: 'The only way to do great work is to love what you do.', author: 'Steve Jobs' },
-    { text: 'It does not matter how slowly you go as long as you do not stop.', author: 'Confucius' },
-    { text: 'Dream it. Wish it. Do it.', author: 'Unknown' },
-    { text: 'Challenges are what make life interesting; overcoming.... is what makes life meaningful.', author: 'Joshua J. Marine' },
-    { text: 'Don’t watch the clock; do what it does. Keep going.', author: 'Sam Levenson' }
-  ]);
 
   document.addEventListener('DOMContentLoaded', () => {
     try {
@@ -61,21 +52,22 @@
     }, { threshold: 0.6 });
     sections.forEach(s => io.observe(s));
   }
-function initTimeline() {
-  const items = document.querySelectorAll(SELECTORS.timelineItems);
-  if (!items.length) return;
 
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
+  function initTimeline() {
+    const items = document.querySelectorAll(SELECTORS.timelineItems);
+    if (!items.length) return;
 
-  items.forEach(item => io.observe(item));
-}
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    items.forEach(item => io.observe(item));
+  }
 
   function initBackToTop() {
     const btn = document.querySelector(SELECTORS.backToTop);
@@ -131,7 +123,6 @@ function initTimeline() {
     sec.addEventListener('mouseenter', () => [textEl, authorEl].forEach(el => el.style.animationPlayState = 'paused'));
     sec.addEventListener('mouseleave', () => [textEl, authorEl].forEach(el => el.style.animationPlayState = 'running'));
   }
-
   function trapFocus(el) {
     const focusable = Array.from(el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
     if (!focusable.length) return () => {};
