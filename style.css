@@ -419,3 +419,28 @@
 .timeline-text {
   /* nothing needed here unless you want extra padding/margins */
 }
+/* ─── Images on the opposite side of the center line ───────────────── */
+
+.timeline li {
+  position: relative; /* already set, but needed for absolute img */
+}
+
+.timeline-img {
+  position: absolute;
+  top: 1rem;               /* align roughly with the dot */
+  width: 80px;             /* adjust as needed */
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Odd items: text is on the left, so push img just to the right of the line */
+.timeline li:nth-child(odd) .timeline-img {
+  left: calc(100% + var(--space-sm));
+}
+
+/* Even items: text is on the right, so push img just to the left of the line */
+.timeline li:nth-child(even) .timeline-img {
+  right: calc(100% + var(--space-sm));
+}
