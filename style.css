@@ -3,16 +3,16 @@
 @layer variables {
   :root {
     /* Color Palette */
-    --color-primary:       #2A9D8F; /* Trustworthy teal */
-    --color-primary-light: #52B69A; /* Softer teal for hover states */
-    --color-accent:        #E76F51; /* Warm terracotta for donate buttons */
-    --color-accent-light:  #F4A261; /* Lighter accent for highlights */
-    --color-bg:            #FEFAE0; /* Gentle off-white background */
-    --color-bg-dark:       #264653; /* Deep teal for dark mode */
-    --color-text:          #264653; /* Dark teal for main text */
-    --color-text-dark:     #F0EFEB; /* Almost-white for dark mode text */
-    --color-white:         #FFFFFF;
-    --color-border:        #E9C46A; /* Soft gold border accent */
+    --color-primary:       #D35400; /* Burnt orange – energetic & friendly */
+  --color-primary-light: #E67E22; /* Lighter orange for hovers & focus */
+  --color-accent:        #C0392B; /* Deep crimson – bold contrast */
+  --color-accent-light:  #E74C3C; /* Brighter red for highlights */
+  --color-bg:            #FDF3E7; /* Warm ivory */
+  --color-bg-dark:       #2C3E50; /* Rich navy for dark mode */
+  --color-text:          #2C3E50; /* Same deep navy for readability */
+  --color-text-dark:     #ECF0F1; /* Soft off‑white in dark mode */
+  --color-white:         #FFFFFF; /* Pure white */
+  --color-border:        #F39C12; /* Golden saffron accent */
     
     /* Spacing Scale */
     --space-xs: .5rem;
