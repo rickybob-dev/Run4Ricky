@@ -254,7 +254,7 @@
 }
 
 .timeline li:nth-child(odd)::before {
-  right: -0.5rem;
+  right: -0.0rem;
 }
 
 .timeline li:nth-child(even)::before {
