@@ -241,16 +241,9 @@
   text-align: left;
 }
 
-.timeline li::before {
-  content: '';
-  position: absolute;
-  /* vertically center */
-  top: 50%;
-  transform: translate(-50%, -50%);
-  /* center horizontally on the line */
-  left: 50%;
-
-  /* keep your dot size and style */
+..timeline li::before {
+  /* …existing properties… */
+  top: 1rem;
   width: 1rem;
   height: 1rem;
   background: var(--color-primary);
@@ -258,6 +251,15 @@
   border-radius: 50%;
   box-shadow: var(--shadow-sm);
 }
+
+.timeline li:nth-child(odd)::before {
+  right: -0.5rem;
+}
+
+.timeline li:nth-child(even)::before {
+  left: -0.5rem;
+}
+
 
 .timeline li.is-visible {
   opacity: 1;
