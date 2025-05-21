@@ -244,21 +244,19 @@
 .timeline li::before {
   content: '';
   position: absolute;
-  top: 1rem;
+  /* vertically center */
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* center horizontally on the line */
+  left: 50%;
+
+  /* keep your dot size and style */
   width: 1rem;
   height: 1rem;
   background: var(--color-primary);
   border: 3px solid var(--color-white);
   border-radius: 50%;
   box-shadow: var(--shadow-sm);
-}
-
-.timeline li:nth-child(odd)::before {
-  right: -0.0rem;
-}
-
-.timeline li:nth-child(even)::before {
-  left: -0.5rem;
 }
 
 .timeline li.is-visible {
