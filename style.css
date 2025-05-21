@@ -388,3 +388,34 @@
     .gallery { grid-template-columns: 1fr; }
   }
 }
+/* ─── Flex wrapper with image + text ───────────────────────────────── */
+
+.timeline-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Thumbnail styling */
+.timeline-content img {
+  width: 100px;             /* tweak as needed */
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+/* On odd Li’s (left‑side), flip the row so the image sits right of text */
+.timeline li:nth-child(odd) .timeline-content {
+  flex-direction: row-reverse;
+}
+
+/* On even Li’s (right‑side), keep normal so image sits left of text */
+.timeline li:nth-child(even) .timeline-content {
+  flex-direction: row;
+}
+
+/* Ensure your text block still honors your existing text‑align */
+.timeline-text {
+  /* nothing needed here unless you want extra padding/margins */
+}
