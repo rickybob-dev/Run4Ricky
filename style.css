@@ -442,18 +442,14 @@ ul.timeline li.is-visible {
   transform: translateY(0);
 }
 
-/* left vs. right side */
 ul.timeline li:nth-child(odd)  { left: 0; }
 ul.timeline li:nth-child(even) { left: 50%; }
 
-/* flex container for text + image */
 .timeline-content {
   display: flex;
   align-items: flex-start;
   gap: var(--space-md);
 }
-
-/* mirror odd entries */
 ul.timeline li:nth-child(odd) .timeline-content {
   flex-direction: row-reverse;
   text-align: right;
@@ -463,12 +459,9 @@ ul.timeline li:nth-child(even) .timeline-content {
   text-align: left;
 }
 
-/* keep text from overlapping image */
 .timeline-text {
-  max-width: calc(100% - 100px); /* 80px image + gap */
+  max-width: calc(100% - 100px);
 }
-
-/* thumbnail styling */
 .timeline-img {
   width: 80px;
   height: 80px;
