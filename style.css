@@ -277,7 +277,11 @@ ul.timeline li.is-visible {
   transform: translateY(0);
 }
 
-
+.timeline-content > .timeline-img,
+.timeline-content > .timeline-text {
+  /* force both image & text to hug the top of their grid row */
+  align-self: start;
+}
   @keyframes fade-in {
     0%, 80% { opacity: 1; transform: translateY(0); }
     90%,100% { opacity: 0; transform: translateY(20px); }
