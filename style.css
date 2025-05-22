@@ -410,28 +410,69 @@ ul.timeline {
 .timeline-text {
   /* nothing needed here unless you want extra padding/margins */
 }
-/* ─── Images on the opposite side of the center line ───────────────── */
-
-.timeline li {
-  position: relative; /* already set, but needed for absolute img */
+/* ─── Timeline – Flex layout ─────────────────────────────────────────── */
+ul.timeline {
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding: var(--space-md) 0;
+}
+ul.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: var(--color-accent);
+  transform: translateX(-50%);
 }
 
+ul.timeline li {
+  position: relative;
+  width: 50%;
+  margin: var(--space-lg) 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+ul.timeline li.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* left vs. right side */
+ul.timeline li:nth-child(odd)  { left: 0; }
+ul.timeline li:nth-child(even) { left: 50%; }
+
+/* flex container for text + image */
+.timeline-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+/* mirror odd entries */
+ul.timeline li:nth-child(odd) .timeline-content {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+ul.timeline li:nth-child(even) .timeline-content {
+  flex-direction: row;
+  text-align: left;
+}
+
+/* keep text from overlapping image */
+.timeline-text {
+  max-width: calc(100% - 100px); /* 80px image + gap */
+}
+
+/* thumbnail styling */
 .timeline-img {
-  position: absolute;
-  top: 1rem;               /* align roughly with the dot */
-  width: 80px;             /* adjust as needed */
+  width: 80px;
   height: 80px;
   object-fit: cover;
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
-}
-
-/* Odd items: text is on the left, so push img just to the right of the line */
-.timeline li:nth-child(odd) .timeline-img {
-  left: calc(100% + var(--space-sm));
-}
-
-/* Even items: text is on the right, so push img just to the left of the line */
-.timeline li:nth-child(even) .timeline-img {
-  right: calc(100% + var(--space-sm));
 }
