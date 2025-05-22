@@ -201,18 +201,15 @@
     margin-inline-start: var(--space-lg);
     padding-inline-start: var(--space-md);
   }
-  /* Timeline */
+ /* ─── Timeline – Grid layout, text & image on opposite halves ───────── */
+
 ul.timeline {
   list-style: none;
+  position: relative;
   margin: 0;
   padding: var(--space-md) 0;
 }
-
-.timeline {
-  position: relative;
-  overflow: visible;
-}
-.timeline::before {
+ul.timeline::before {
   content: '';
   position: absolute;
   top: 0; bottom: 0;
@@ -222,39 +219,64 @@ ul.timeline {
   transform: translateX(-50%);
 }
 
-.timeline li {
+ul.timeline li {
   position: relative;
-  width: calc(50% - var(--space-md));
   margin: var(--space-lg) 0;
+}
+
+/* create two equal‑width columns per item */
+.timeline-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: var(--space-lg);
+}
+
+/* ── Odd items: image on LEFT outer half, text on RIGHT half ── */
+ul.timeline li:nth-child(odd) .timeline-img {
+  grid-column: 1;
+  justify-self: start;
+  margin-left: var(--space-md);
+}
+ul.timeline li:nth-child(odd) .timeline-text {
+  grid-column: 2;
+  padding-left: var(--space-md);
+  text-align: left;
+}
+
+/* ── Even items: text on LEFT half, image on RIGHT outer half ── */
+ul.timeline li:nth-child(even) .timeline-text {
+  grid-column: 1;
+  padding-right: var(--space-md);
+  text-align: right;
+}
+ul.timeline li:nth-child(even) .timeline-img {
+  grid-column: 2;
+  justify-self: end;
+  margin-right: var(--space-md);
+}
+
+/* unified image styling */
+.timeline-img {
+  width: 100px;       /* tweak size as you like */
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+/* scroll‑reveal (your existing JS adds .is-visible) */
+ul.timeline li {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity var(--duration) var(--ease),
               transform var(--duration) var(--ease);
 }
-.timeline li:nth-child(odd) {
-  left: 0;
-  text-align: right;
-}
-.timeline li:nth-child(even) {
-  left: 50%;
-  text-align: left;
-}
-
-.timeline li::before {
-  content: '';
-  position: absolute;
-  top: 1rem;
-  width: 1rem; height: 1rem;
-  background: var(--color-primary);
-  border: 3px solid var(--color-white);
-  border-radius: 50%;
-  box-shadow: var(--shadow-sm);
-}
-
-.timeline li.is-visible {
+ul.timeline li.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
+
 
   @keyframes fade-in {
     0%, 80% { opacity: 1; transform: translateY(0); }
@@ -379,93 +401,5 @@ ul.timeline {
     .gallery { grid-template-columns: 1fr; }
   }
 }
-/* ─── Flex wrapper with image + text ───────────────────────────────── */
 
-.timeline-content {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
 
-/* Thumbnail styling */
-.timeline-content img {
-  width: 100px;             /* tweak as needed */
-  height: 100px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-}
-
-/* On odd Li’s (left‑side), flip the row so the image sits right of text */
-.timeline li:nth-child(odd) .timeline-content {
-  flex-direction: row-reverse;
-}
-
-/* On even Li’s (right‑side), keep normal so image sits left of text */
-.timeline li:nth-child(even) .timeline-content {
-  flex-direction: row;
-}
-
-/* Ensure your text block still honors your existing text‑align */
-.timeline-text {
-  /* nothing needed here unless you want extra padding/margins */
-}
-/* ─── Timeline – Flex layout ─────────────────────────────────────────── */
-ul.timeline {
-  list-style: none;
-  position: relative;
-  margin: 0;
-  padding: var(--space-md) 0;
-}
-ul.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 50%;
-  width: 4px;
-  background: var(--color-accent);
-  transform: translateX(-50%);
-}
-
-ul.timeline li {
-  position: relative;
-  width: 50%;
-  margin: var(--space-lg) 0;
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity var(--duration) var(--ease),
-    transform var(--duration) var(--ease);
-}
-ul.timeline li.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-ul.timeline li:nth-child(odd)  { left: 0; }
-ul.timeline li:nth-child(even) { left: 50%; }
-
-.timeline-content {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-md);
-}
-ul.timeline li:nth-child(odd) .timeline-content {
-  flex-direction: row-reverse;
-  text-align: right;
-}
-ul.timeline li:nth-child(even) .timeline-content {
-  flex-direction: row;
-  text-align: left;
-}
-
-.timeline-text {
-  max-width: calc(100% - 100px);
-}
-.timeline-img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-}
