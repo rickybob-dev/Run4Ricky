@@ -282,6 +282,24 @@ ul.timeline li.is-visible {
   /* force both image & text to hug the top of their grid row */
   align-self: start;
 }
+  figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+figcaption {
+  max-width: 300px;
+  padding: var(--space-sm);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: justify;
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
   @keyframes fade-in {
     0%, 80% { opacity: 1; transform: translateY(0); }
     90%,100% { opacity: 0; transform: translateY(20px); }
