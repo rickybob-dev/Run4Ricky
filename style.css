@@ -172,17 +172,24 @@
     transform: translateY(0);
   }
 
-  /* Gallery */
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-    gap: var(--space-sm);
-  }
-  .gallery img {
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
-    object-fit: cover;
-  }
+  /* ─── Gallery: Larger images (min 300px), auto‐fitting columns ─── */
+.gallery {
+  display: grid;
+  /* make each column at least 300px wide; auto‐fit as many as possible */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);       /* more breathing room between items */
+  justify-items: center;      /* center each figure in its grid cell */
+}
+
+/* Stretch images to fill their column */
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  object-fit: cover;
+}
+
 
   /* Quotes Slider */
   #quotes-section {
@@ -289,16 +296,19 @@ ul.timeline li.is-visible {
   text-align: left;
 }
 
+/* ─── Figcaptions: span full column width, more padding ─── */
 figcaption {
-  max-width: 300px;
+  width: 100%;
+  margin-top: var(--space-xs);
   padding: var(--space-sm);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  text-align: justify;
   background: var(--color-white);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
 }
+
 
   @keyframes fade-in {
     0%, 80% { opacity: 1; transform: translateY(0); }
@@ -424,4 +434,9 @@ figcaption {
   }
 }
 
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
 
