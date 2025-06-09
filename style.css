@@ -439,25 +439,5 @@ figcaption {
     grid-template-columns: 1fr;
   }
 }
-/* ── Team-Gallery Carousel Controls ───────────────────────────────── */
-#team-gallery .team-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--color-primary);
-  color: var(--color-white);
-  border: none;
-  padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 1.5rem;
-  z-index: 10;
-}
-#team-prev { left: var(--space-sm); }
-#team-next { right: var(--space-sm); }
 
-/* Ensure each figure is block-level when hidden/displayed */
-#team-gallery .gallery figure {
-  display: block;
-}
 
