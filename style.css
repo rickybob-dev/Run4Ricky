@@ -504,6 +504,13 @@ figcaption {
 .next::before {
   content: "›"; /* Unicode right arrow */
 }
+.prev {
+  left: 1rem;
+}
+
+.next {
+  right: 1rem;
+}
 
 /* Hover effect */
 .prev:hover,
