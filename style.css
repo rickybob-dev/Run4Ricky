@@ -473,17 +473,16 @@ figcaption {
   object-fit: unset !important;
 }
 
-/* Carousel arrow base style */
 .prev, .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 3rem;
-  height: 3.5rem;
-  border-radius: 2rem;
+  width: 2.5rem;
+  height: 3.75rem;
+  border-radius: 999px; /* Force pill shape */
   background-color: #D35400;
   color: white;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -496,21 +495,19 @@ figcaption {
   border: none;
 }
 
-/* Add modern left/right arrow symbols */
-.prev::before {
-  content: "‹"; /* Unicode left arrow */
+.prev::before { content: "‹"; }
+.next::before { content: "›"; }
+
+.prev:hover,
+.next:hover {
+  background-color: #E67E22;
+  transform: translateY(-50%) scale(1.1);
 }
 
-.next::before {
-  content: "›"; /* Unicode right arrow */
-}
-.prev {
-  left: 1rem;
-}
+/* Position arrows left and right */
+.prev { left: 1rem; }
+.next { right: 1rem; }
 
-.next {
-  right: 1rem;
-}
 
 /* Hover effect */
 .prev:hover,
