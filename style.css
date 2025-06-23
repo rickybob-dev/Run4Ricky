@@ -473,31 +473,44 @@ figcaption {
   object-fit: unset !important;
 }
 
-/* Custom styled arrows inspired by user image */
+/* Carousel arrow base style */
 .prev, .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #D35400;
+  width: 3rem;
+  height: 3.5rem;
+  border-radius: 2rem;
+  background-color: #D35400;
   color: white;
   font-size: 2rem;
-  padding: 0.75rem 1rem;
-  border-radius: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 10;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
   cursor: pointer;
   user-select: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  font-family: system-ui, sans-serif;
+  border: none;
 }
 
-.prev:hover, .next:hover {
-  background: #E67E22;
+/* Add modern left/right arrow symbols */
+.prev::before {
+  content: "‹"; /* Unicode left arrow */
+}
+
+.next::before {
+  content: "›"; /* Unicode right arrow */
+}
+
+/* Hover effect */
+.prev:hover,
+.next:hover {
+  background-color: #E67E22;
   transform: translateY(-50%) scale(1.1);
 }
-
-.prev { left: 1rem; }
-.next { right: 1rem; }
 
 .carousel-slide figcaption {
   margin-top: 1rem;
