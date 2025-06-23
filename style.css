@@ -521,13 +521,6 @@ figcaption {
 }
 
 
-/* ───── Force Specific Chevron Style via Content (Optional) ───── */
-.prev::before {
-  content: "\2B9C"; /* Unicode for ⮜ */
-}
-.next::before {
-  content: "\2B9E"; /* Unicode for ⮞ */
-}
 
 /* Hide default text inside buttons if present */
 .prev, .next {
