@@ -1,5 +1,5 @@
 /* style.css — Cleaned & Improved */
-
+p {text-align: justify;}
 @layer variables {
   :root {
     /* Color Palette */
