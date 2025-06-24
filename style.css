@@ -239,29 +239,30 @@ ul.timeline li {
   gap: var(--space-lg);
 }
 
-/* ── Odd items: image on LEFT outer half, text on RIGHT half ── */
 ul.timeline li:nth-child(odd) .timeline-img {
   grid-column: 1;
-  justify-self: start;
-  margin-left: var(--space-md);
+  justify-self: end; /* ← aligns to center line */
+  padding-right: var(--space-md);
 }
+
 ul.timeline li:nth-child(odd) .timeline-text {
   grid-column: 2;
   padding-left: var(--space-md);
   text-align: left;
 }
 
-/* ── Even items: text on LEFT half, image on RIGHT outer half ── */
 ul.timeline li:nth-child(even) .timeline-text {
   grid-column: 1;
   padding-right: var(--space-md);
   text-align: right;
 }
+
 ul.timeline li:nth-child(even) .timeline-img {
   grid-column: 2;
-  justify-self: end;
-  margin-right: var(--space-md);
+  justify-self: start; /* ← aligns to center line */
+  padding-left: var(--space-md);
 }
+
 
 /* unified image styling */
 .timeline-img {
