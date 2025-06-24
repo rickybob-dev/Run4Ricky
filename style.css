@@ -239,39 +239,26 @@ ul.timeline li {
   gap: var(--space-lg);
 }
 
-ul.timeline li:nth-child(odd) .timeline-img {
-  grid-column: 1;
-  justify-self: end; /* ← aligns to center line */
-  padding-right: var(--space-md);
-}
-
-ul.timeline li:nth-child(odd) .timeline-text {
-  grid-column: 2;
-  padding-left: var(--space-md);
-  text-align: left;
-}
-
-ul.timeline li:nth-child(even) .timeline-text {
-  grid-column: 1;
-  padding-right: var(--space-md);
-  text-align: right;
-}
-
-ul.timeline li:nth-child(even) .timeline-img {
-  grid-column: 2;
-  justify-self: start; /* ← aligns to center line */
-  padding-left: var(--space-md);
+.timeline-content > * {
+  padding: 0;
 }
 
 
-/* unified image styling */
 .timeline-img {
-  width: 100px;       /* tweak size as you like */
-  height: 100px;
+  width: 250px;
+  max-height: 200px;
   object-fit: cover;
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
 }
+video.timeline-img {
+  width: 250px;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
 
 /* scroll‑reveal (your existing JS adds .is-visible) */
 ul.timeline li {
