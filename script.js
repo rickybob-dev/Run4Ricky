@@ -145,57 +145,66 @@
     return () => el.removeEventListener('keydown', handler);
   }
 
-  function initGalleryLightbox() {
-    
-   document.body.addEventListener('click', e => {
-  const imgEl = e.target.closest('img.timeline-img, .gallery img');
-  if (imgEl) openLightbox(imgEl);
-});
+function initGalleryLightbox() {
+  const modal = document.createElement('div');
+  modal.className = 'lightbox-modal';
+  modal.role = 'dialog';
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-hidden', 'true');
 
-    const modal = document.createElement('div');
-    modal.className = 'lightbox-modal';
-    modal.role = 'dialog'; modal.setAttribute('aria-modal','true'); modal.setAttribute('aria-hidden','true');
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'lightbox-close';
-    closeBtn.setAttribute('aria-label','Close');
-    closeBtn.innerHTML = '&times;';
-    const img = document.createElement('img');
-    img.className = 'lightbox-image'; img.alt = '';
-    img.setAttribute('aria-hidden','true');
-    const caption = document.createElement('div');
-    caption.className = 'lightbox-caption';
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'lightbox-close';
+  closeBtn.setAttribute('aria-label', 'Close');
+  closeBtn.innerHTML = '&times;';
 
-    modal.append(closeBtn, img, caption);
-    document.body.append(modal);
+  const img = document.createElement('img');
+  img.className = 'lightbox-image';
+  img.alt = '';
+  img.setAttribute('aria-hidden', 'true');
 
-    let restoreFocus;
-    function openLightbox(target) {
-      document.querySelector('main')?.setAttribute('aria-hidden','true');
-      restoreFocus = trapFocus(modal);
-      img.src = target.src;
-      caption.textContent = target.alt || '';
-      img.setAttribute('aria-hidden','false');
-      modal.setAttribute('aria-hidden','false');
-      modal.classList.add('show');
-      closeBtn.focus();
-    }
-    function closeLightbox() {
-      modal.setAttribute('aria-hidden','true');
-      modal.classList.remove('show');
-      img.src = '';
-      img.setAttribute('aria-hidden','true');
-      document.querySelector('main')?.removeAttribute('aria-hidden');
-      restoreFocus?.();
+  const caption = document.createElement('div');
+  caption.className = 'lightbox-caption';
+
+  modal.append(closeBtn, img, caption);
+  document.body.append(modal);
+
+  let restoreFocus;
+
+  function openLightbox(target) {
+    if (target.tagName === 'VIDEO') {
+      target.requestFullscreen?.(); // fallback for older browsers
+      return;
     }
 
-    gallery.addEventListener('click', e => {
-      const imgEl = e.target.closest('img');
-      if (imgEl) openLightbox(imgEl);
-    });
-    closeBtn.addEventListener('click', closeLightbox);
-    modal.addEventListener('click', e => e.target === modal && closeLightbox());
-    document.addEventListener('keydown', e => e.key === 'Escape' && modal.classList.contains('show') && closeLightbox());
+    document.querySelector('main')?.setAttribute('aria-hidden', 'true');
+    restoreFocus = trapFocus(modal);
+    img.src = target.src;
+    caption.textContent = target.alt || '';
+    img.setAttribute('aria-hidden', 'false');
+    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('show');
+    closeBtn.focus();
   }
+
+  function closeLightbox() {
+    modal.setAttribute('aria-hidden', 'true');
+    modal.classList.remove('show');
+    img.src = '';
+    img.setAttribute('aria-hidden', 'true');
+    document.querySelector('main')?.removeAttribute('aria-hidden');
+    restoreFocus?.();
+  }
+
+  // ✅ This part ensures both gallery and timeline images work
+  document.body.addEventListener('click', e => {
+    const imgEl = e.target.closest('img.timeline-img, .gallery img, video.timeline-img');
+    if (imgEl) openLightbox(imgEl);
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  modal.addEventListener('click', e => e.target === modal && closeLightbox());
+  document.addEventListener('keydown', e => e.key === 'Escape' && modal.classList.contains('show') && closeLightbox());
+}
 
   function throttle(fn, wait = 100) {
     let last = 0;
