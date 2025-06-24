@@ -146,8 +146,11 @@
   }
 
   function initGalleryLightbox() {
-    const gallery = document.querySelector(SELECTORS.gallery);
-    if (!gallery) return;
+    
+   document.body.addEventListener('click', e => {
+  const imgEl = e.target.closest('img.timeline-img, .gallery img');
+  if (imgEl) openLightbox(imgEl);
+});
 
     const modal = document.createElement('div');
     modal.className = 'lightbox-modal';
