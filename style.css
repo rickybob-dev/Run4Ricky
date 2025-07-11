@@ -1,4 +1,3 @@
-/* style.css — Cleaned & Improved */
 @journey{text-align:justify;}
 
 @layer variables {
@@ -78,6 +77,10 @@
   }
   header img {
     width: clamp(60px, 20vw, 120px);
+    /* Center and make circular */
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
   }
 
   nav {
@@ -145,11 +148,20 @@
     nav {
       flex-direction: column;
     }
+    header img {
+      width: 80px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 50%;
+    }
   }
 
   @media (max-width: var(--bp-xs)) {
     header img {
       width: clamp(50px, 30vw, 80px);
+      margin: 0 auto;
+      display: block;
+      border-radius: 50%;
     }
     html {
       font-size: 14px;
