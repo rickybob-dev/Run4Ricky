@@ -197,7 +197,7 @@ function initGalleryLightbox() {
 
   // ✅ This part ensures both gallery and timeline images work
   document.body.addEventListener('click', e => {
-    const imgEl = e.target.closest('img.timeline-img, .gallery img, video.timeline-img');
+    const imgEl = e.target.closest('img.timeline-img, .gallery img, video.timeline-img, .certificate-img');
     if (imgEl) openLightbox(imgEl);
   });
 
