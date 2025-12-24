@@ -128,6 +128,29 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--space-lg);
   }
+
+.certificates {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-md);
+}
+
+.certificate-img {
+  width: 180px;                 /* initially small */
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition:
+    transform var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+.certificate-img:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
 }
 
 @layer dark-mode {
