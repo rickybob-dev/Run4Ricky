@@ -3,9 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Run4Ricky Foundation - Home</title>
+  <title>Run4Ricky Foundation — Keep Moving Forward</title>
+  <meta name="description" content="One man's spinal cord injury became a movement. Run4Ricky runs marathons to fund spinal cord research and back people living with paralysis. Keep moving forward." />
+  <link rel="canonical" href="https://run4ricky.xyz/" />
+  <link rel="icon" href="assets/brand/logo.png" />
 
-  <!-- Lazy‑load Font Awesome -->
+  <!-- Open Graph / social cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Run4Ricky Foundation" />
+  <meta property="og:title" content="Run4Ricky Foundation — Keep Moving Forward" />
+  <meta property="og:description" content="One man's spinal cord injury became a movement. We run marathons to fund spinal research and back people living with paralysis." />
+  <meta property="og:url" content="https://run4ricky.xyz/" />
+  <meta property="og:image" content="https://run4ricky.xyz/assets/brand/hero.jpg" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1086" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <link
     rel="preload"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -13,310 +30,291 @@
     onload="this.onload=null;this.rel='stylesheet'"
   />
   <noscript>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-p0xIcTBXVfvI0/VwZ8OWXfAnHNxC6jT66mf6ZLQTse5nG4DxDujJ4k3ldyp8i51KGxBnqXQUhBn73Bbq0hZTbg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </noscript>
 
-  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Run4Ricky Foundation Logo">
-    <h1>Run4Ricky Foundation</h1>
-    <p>Empowering lives through awareness, support, and inclusion.</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav" data-open="false">
+    <div class="nav-left">
+      <a class="nav-brand" href="index.html" aria-label="Run4Ricky home">
+        <img src="assets/brand/logo.png" alt="" width="36" height="36" />
+        <b>RUN4<span>RICKY</span></b>
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Primary">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="events-newsletter.html">Events</a>
+        <a href="media.html">Media</a>
+        <a href="disabled-living.html">Living with SCI</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <a class="nav-ig" href="https://www.facebook.com/profile.php?id=61576531108313" target="_blank" rel="noopener noreferrer" aria-label="Follow on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+      <a class="nav-ig" href="https://www.instagram.com/run4riccardo/" target="_blank" rel="noopener noreferrer" aria-label="Follow on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      <a class="nav-cta" href="donate.html">Donate</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span></button>
   </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="events-newsletter.html">Events & Updates</a>
-    <a href="media.html">Media</a>
-    <a href="disabled-living.html">Disabled Living</a>    
-    <a href="donate.html">Donate</a>
-  </nav>
+  <main id="main">
 
-  <main>
-    <section>
-      <h2>About Run4Ricky</h2>
-      <p>Run4Ricky is a movement to promote awareness and inclusion for individuals with disabilities. We believe in a future where everyone can thrive, no matter their ability.</p>
+    <!-- ============================ HERO ============================ -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('assets/brand/hero.jpg?v=2')" data-parallax="0.14"></div>
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/brand/hero.jpg" aria-hidden="true">
+        <source src="assets/brand/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="wrap hero-inner">
+        <p class="kicker">Spinal cord injury · awareness · momentum</p>
+        <h1>Keep<br>moving<br><span class="em">forward.</span></h1>
+        <p class="hero-sub">In 2022 Riccardo Barbieri broke his neck. He never stopped moving. Now a team runs marathons in his name to fund spinal cord research and stand with everyone still fighting.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="donate.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            Donate now
+          </a>
+          <a class="btn btn-ghost" href="#story">Ricky's story</a>
+        </div>
+      </div>
+      <p class="hero-scroll">Scroll</p>
     </section>
 
-    <section>
-      <h2>Our Mission</h2>
-      <p>Through advocacy, education, and community events, we aim to create equal opportunities and support networks for disabled individuals and their families. Our mission is rooted in compassion, dignity, and a belief that everyone deserves access to resources, inclusion, and a chance to thrive.</p>
-    </section>
- <section>
-      <h2 class="journey" >Ricky’s Journey</h2>
-      <p>In December 2022,Riccardo Barbieri, suffered a life-altering spinal cord injury falling headfirst in a lake fracturing C4/C5. What began as a joyful exploration of the Omani mountains turned into a challenging journey toward recovery and reinvention. The accident not only transformed Ricky’s life but also illuminated the profound lack of resources, support, and community awareness for individuals with spinal cord injuries in Italy and beyond.
-
-        From the hospital bed to intensive rehabilitation, Ricky experienced firsthand the emotional, physical, and financial hurdles faced by people living with paralysis. Family and friends rallied around him, offering encouragement, hope, and small acts of kindness that made all the difference. But he also encountered obstacles: limited access to adaptive sporting equipment, expensive home modifications, and a scarcity of educational materials tailored to post-injury life.
-
-        Inspired by the compassion that carried him through the darkest days and driven by a desire to ensure that no one faces these challenges alone, Ricky and twin brother established the Run4Ricky movement. Our organization is built on the belief that every person deserves the opportunity to reclaim independence, pursue dreams, and live life to the fullest, regardless of physical limitations.</p>
-    </section>
-
-    <section>
-<section>
-  <h2>Milestones &amp; Timeline</h2>
-
-  <ul class="timeline">
-
-    <!-- 1 -->
-    <li>
-      <div class="timeline-content">
-        <div class="timeline-text">
-          <time datetime="2022-12">December 2022</time>
-          <p>
-            <strong>Falling headfirst in the Oman mountains:</strong>
-            Fractured my spinal cord, then hiked five hours back to the ambulance.
-          </p>
+    <!-- ============================ MISSION ============================ -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="kicker">Why we exist</p>
+          <h2 class="section-title">A movement for everyone who moves differently.</h2>
         </div>
-      <video class="timeline-img" controls>
-  <source src="Videos/oman-acident.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-      </div>
-    </li>
-
-    <!-- 2 -->
-    <li>
-      <div class="timeline-content">
-        <div class="timeline-text">
-          <time datetime="2023-01-01">Early January 2023</time>
-          <p>
-            <strong>Medical coma and surgery:</strong>
-            Placed on a ventilator and put into a coma; underwent a 12‑hour operation to stabilize my spine.
-          </p>
+        <div class="cards stagger reveal">
+          <article class="card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-8.7C1 9 2.6 5 6.3 5c2.2 0 3.5 1.4 4.7 3 1.2-1.6 2.5-3 4.7-3 3.7 0 5.3 4 3.6 7.3C19 16.6 12 21 12 21z"/></svg>
+            <h3>Awareness</h3>
+            <p>Most people know nothing about spinal cord injury until it reaches them. We tell one true story loudly enough to change that.</p>
+          </article>
+          <article class="card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-6 4 14 2-8h6"/></svg>
+            <h3>Research</h3>
+            <p>We raise funds for Spinal Research so the science that could let people walk again keeps moving. Recovery is a research problem.</p>
+          </article>
+          <article class="card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.3 3.1-5 7-5s7 1.7 7 5"/><path d="M16 3.5a3 3 0 0 1 0 7M22 21c0-2.6-1.8-4.3-4.5-4.8"/></svg>
+            <h3>Inclusion</h3>
+            <p>Adaptive kit, real guides, honest community. Practical help for people living with paralysis and the families beside them.</p>
+          </article>
         </div>
-        <img
-          class="timeline-img"
-          src="Pictures/spine.jpg"
-          alt="Medical coma and surgery"
-        >
-      </div>
-    </li>
-
-    <!-- 3 -->
-    <li>
-      <div class="timeline-content">
-        <div class="timeline-text">
-          <time datetime="2023-01-15">Mid‑January 2023</time>
-          <p>
-            <strong>Airlift to Milan:</strong>
-            After two weeks in Oman, I was airlifted overland to Niguarda Hospital in Milan—and finally woke up.
-          </p>
-        </div>
-       <video class="timeline-img" controls>
-  <source src="Videos/airoplane.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-      </div>
-    </li>
-
-    <!-- 4 -->
-    <li>
-      <div class="timeline-content">
-        <div class="timeline-text">
-          <time datetime="2023-03">January–March 2023</time>
-          <p>
-            <strong>Intensive care challenges:</strong>
-            Spent two months in ICU, survived heart attacks and a stroke, still unable to breathe unaided.
-          </p>
-        </div>
-        <img
-          class="timeline-img"
-          src=" Pictures/niguarda.jpeg"
-          alt="Intensive care challenges"
-        >
-      </div>
-    </li>
-
-    <!-- 5 -->
-    <li>
-      <div class="timeline-content">
-        <div class="timeline-text">
-          <time datetime="2023-02">February 2023</time>
-          <p>
-            <strong>First therapies:</strong>
-            Transferred to Niguarda’s spinal‑cord unit; began respiratory and physical physiotherapy.
-          </p>
-        </div>
-        <img
-          class="timeline-img"
-          src="Pictures/intens.jpg"
-          alt="Niguarda SCU"
-        >
-      </div>
-    </li>
-
-    <!-- 6 -->
-    <li>
-      <div class="timeline-content">
-        <div class="timeline-text">
-          <time datetime="2023-05">May 2023</time>
-          <p>
-            <strong>Move to Balgrist, Switzerland:</strong>
-            Began intensive physiotherapy after 3½ months at Niguarda.
-          </p>
-        </div>
-        <img
-          class="timeline-img"
-          src="Pictures/trip-swis.jpg"
-          alt="Move to Balgrist, Switzerland"
-        >
-      </div>
-    </li>
-
-    <!-- 7 -->
-    <li>
-      <div class="timeline-content">
-        <div class="timeline-text">
-          <time datetime="2023">Throughout 2023</time>
-          <p>
-            <strong>Relearning movement:</strong>
-            Learned to stand, transfer, and mechanically walk; drastically reduced medications. The start of stabilisation.
-          </p>
-        </div>
-        <video class="timeline-img" controls>
-  <source src="Videos/walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-      </div>
-    </li>
-
-    <!-- 8 -->
-    <li>
-      <div class="timeline-content">
-        <div class="timeline-text">
-          <time datetime="2023-10">October 2023</time>
-          <p>
-            <strong> Return Home:</strong>
-            After 14 months of rehabilitation and hospitalisation Ricky goes home.
-          </p>
-        </div>
-        <img
-          class="timeline-img"
-          src="Pictures/home-pic.jpeg"
-          alt="Home"
-        >
-      </div>
-    </li>
-
-    <!-- 9 -->
-    <li>
-      <div class="timeline-content">
-        <div class="timeline-text">
-          <time datetime="2024-04">April 2024</time>
-          <p>
-            <strong>Launch of Run4Ricky:</strong>
-            Founded with twin brother a charity initiative to raise awareness and support spinal‑cord research.
-          </p>
-        </div>
-        <img
-          class="timeline-img"
-          src="logo.png"
-          alt="Launch of Run4Ricky Foundation"
-        >
-      </div>
-    </li>
-
-
-  </ul>
-</section>
-
-
-    <section id="quotes-section">
-      <h2>Inspiring Quotes & Advice</h2>
-      <div id="quote-container">
-        <blockquote id="quote-text"></blockquote>
-        <p id="quote-author"></p>
-      </div>
-      <div class="quote-controls">
-        <button id="prev" aria-label="Previous quote">
-          <i class="fas fa-chevron-left" aria-hidden="true"></i>
-        </button>
-        <button id="next" aria-label="Next quote">
-          <i class="fas fa-chevron-right" aria-hidden="true"></i>
-        </button>
       </div>
     </section>
 
-    <section>
-      <h2>Share Your Wisdom</h2>
-      <form action="mailto:runrickymovement@gmail.com" method="POST">
-        <label for="name" class="sr-only">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="Your Name" required>
+    <!-- ============================ STORY (long read) ============================ -->
+    <section class="section invert" id="story">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="kicker">Ricky's story</p>
+          <h2 class="section-title">It started with a fall in the Omani mountains.</h2>
+        </div>
+        <div class="story-grid">
+          <figure class="story-figure reveal" data-reveal="left">
+            <img src="assets/brand/omani-mountains.jpg" alt="The Omani mountains where Ricky fell, a still pool beneath rugged peaks" loading="lazy" />
+          </figure>
+          <div class="prose reveal" data-reveal="right">
+            <p>In December 2022, Riccardo Barbieri fell headfirst into a lake while exploring the mountains of Oman, fracturing his spinal cord at C4/C5. What began as a joyful adventure turned into a long road toward recovery and reinvention. The accident changed Ricky's life, and it exposed how little support, funding, and awareness exists for people with spinal cord injuries in Italy and beyond.</p>
+            <p>From a hospital bed through intensive rehabilitation, Ricky met the emotional, physical, and financial walls that everyone living with paralysis knows. Family and friends rallied around him with encouragement, hope, and small acts of kindness that made all the difference. He also hit the barriers head-on: limited access to adaptive sports equipment, expensive home modifications, and almost nothing written for life after injury.</p>
+            <p>Carried by that same compassion, and determined that no one should face this alone, Ricky and his twin brother built the Run4Ricky movement. We believe every person deserves the chance to reclaim independence, chase goals, and live fully, whatever their body can do.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <label for="testimonial" class="sr-only">Your Wisdom</label>
-        <textarea id="testimonial" name="testimonial" rows="4" placeholder="Your Wisdom..." required></textarea>
+    <!-- ============================ TIMELINE ============================ -->
+    <section class="section" aria-label="Milestones">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="kicker">The road so far</p>
+          <h2 class="section-title">From a lake bed to a start line.</h2>
+        </div>
 
-        <button type="submit">Submit</button>
-      </form>
+        <ol class="timeline">
+          <li class="reveal">
+            <span class="t-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6-11 4 6 3-5 5 10z"/></svg>
+            </span>
+            <p class="t-date">December 2022</p>
+            <p class="t-body"><strong>A fall in Oman.</strong> Ricky fractured his spinal cord falling headfirst into a lake, then made it five hours back down the mountain to the ambulance.</p>
+            <div class="t-media">
+              <video controls preload="none" playsinline poster="assets/images/spine.jpg">
+                <source src="assets/video/oman-acident.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </li>
+
+          <li class="reveal">
+            <span class="t-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-5 3 10 2-5h4"/><path d="M17 12h4"/></svg>
+            </span>
+            <p class="t-date">Early January 2023</p>
+            <p class="t-body"><strong>Coma and surgery.</strong> Ventilated and placed in a coma, Ricky underwent a 12-hour operation to stabilise his spine.</p>
+            <div class="t-media">
+              <img src="assets/images/spine.jpg" alt="Surgical spinal imaging from Ricky's stabilisation operation" loading="lazy" />
+            </div>
+          </li>
+
+          <li class="reveal">
+            <span class="t-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16l20-7-9 12-2-5-9 0z"/></svg>
+            </span>
+            <p class="t-date">Mid January 2023</p>
+            <p class="t-body"><strong>Airlift to Milan.</strong> After two weeks in Oman, Ricky was flown to Niguarda Hospital in Milan, and finally woke up.</p>
+            <div class="t-media">
+              <video controls preload="none" playsinline poster="assets/images/niguarda.jpeg">
+                <source src="assets/video/airoplane.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </li>
+
+          <li class="reveal">
+            <span class="t-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-5h6v5"/><path d="M12 3v4M10 9h4"/></svg>
+            </span>
+            <p class="t-date">January – March 2023</p>
+            <p class="t-body"><strong>Intensive care.</strong> Two months in the ICU. Ricky survived heart attacks and a stroke, still unable to breathe on his own.</p>
+            <div class="t-media">
+              <img src="assets/images/niguarda.jpeg" alt="Niguarda Hospital in Milan, where Ricky spent months in intensive care" loading="lazy" />
+            </div>
+          </li>
+
+          <li class="reveal">
+            <span class="t-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 7c-3 1-5 4-5 8 3 0 5-1 6-3"/><path d="M16 7c3 1 5 4 5 8-3 0-5-1-6-3"/></svg>
+            </span>
+            <p class="t-date">February 2023</p>
+            <p class="t-body"><strong>First therapies.</strong> Moved to Niguarda's spinal cord unit, Ricky began respiratory and physical physiotherapy.</p>
+            <div class="t-media">
+              <img src="assets/images/intens.jpg" alt="Ricky in early physiotherapy at Niguarda's spinal cord unit" loading="lazy" />
+            </div>
+          </li>
+
+          <li class="reveal">
+            <span class="t-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l5-9 4 5 3-7 6 11z"/></svg>
+            </span>
+            <p class="t-date">May 2023</p>
+            <p class="t-body"><strong>On to Balgrist, Switzerland.</strong> After three and a half months at Niguarda, intensive rehabilitation began in Zurich.</p>
+            <div class="t-media">
+              <img src="assets/images/trip-swis.jpg" alt="The move to Balgrist rehabilitation clinic in Switzerland" loading="lazy" />
+            </div>
+          </li>
+
+          <li class="reveal">
+            <span class="t-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4l-2 5 3 2-3 9"/><circle cx="15" cy="3" r="1.4"/><path d="M8 10l3-1"/></svg>
+            </span>
+            <p class="t-date">Through 2023</p>
+            <p class="t-body"><strong>Relearning movement.</strong> Ricky learned to stand, transfer, and walk mechanically, and cut his medications sharply. Stabilisation began.</p>
+            <div class="t-media video-full">
+              <video controls preload="none" playsinline poster="assets/images/walk.jpg">
+                <source src="assets/video/walk.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </li>
+
+          <li class="reveal">
+            <span class="t-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+            </span>
+            <p class="t-date">October 2023</p>
+            <p class="t-body"><strong>Home.</strong> After more than a year of hospitalisation and rehab, Ricky went home.</p>
+            <div class="t-media contain">
+              <img src="assets/images/home-pic.jpeg" alt="Ricky home again after more than a year away" loading="lazy" />
+            </div>
+          </li>
+
+          <li class="reveal">
+            <span class="t-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-1-3 2 1 4 4 4 7a7 7 0 0 1-14 0c0-4 4-6 6-10z"/></svg>
+            </span>
+            <p class="t-date">April 2024</p>
+            <p class="t-body"><strong>Run4Ricky begins.</strong> Ricky and his twin brother founded the movement, to raise awareness and fund spinal cord research.</p>
+            <div class="t-media contain">
+              <img src="assets/brand/logo.png" alt="The Run4Ricky Foundation logo" loading="lazy" />
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================ FORWARD BAND ============================ -->
+    <section class="band" style="background-image:url('assets/brand/bg-forward.jpg')" aria-label="Why we run">
+      <div class="wrap reveal">
+        <p class="kicker">Why we run</p>
+        <h2 class="section-title">For everyone still fighting to move.</h2>
+        <p>Every kilometre we cover is for someone who can't yet take a single step. That is the whole point.</p>
+      </div>
+    </section>
+
+    <!-- ============================ QUOTES ============================ -->
+    <section class="section" id="quotes-section" aria-label="Words that keep us moving">
+      <div class="wrap">
+        <div class="quote-wrap reveal">
+          <blockquote id="quote-text"></blockquote>
+          <cite id="quote-author"></cite>
+          <div class="quote-ctrl">
+            <button id="prev" aria-label="Previous quote"><i class="fas fa-arrow-left" aria-hidden="true"></i></button>
+            <button id="next" aria-label="Next quote"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ SHARE ============================ -->
+    <section class="section" aria-label="Share your wisdom">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="kicker">Share your wisdom</p>
+          <h2 class="section-title">Been through it? Send hope forward.</h2>
+          <p class="section-lead">If you have lived with injury, recovery, or caregiving, your words help the next person. Send us a line.</p>
+        </div>
+        <form class="share reveal" action="mailto:runrickymovement@gmail.com" method="POST" enctype="text/plain">
+          <label class="sr-only" for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+          <label class="sr-only" for="testimonial">Your wisdom</label>
+          <textarea id="testimonial" name="testimonial" rows="4" placeholder="Your wisdom..." required></textarea>
+          <button class="btn btn-primary" type="submit">Send it</button>
+        </form>
+      </div>
     </section>
   </main>
 
-  <footer>
-  <section>
-    <h2>Contact Us</h2>
-    <nav class="social-icons" aria-label="Follow us on social media">
-      <!-- Facebook -->
-      <a
-        href="https://www.facebook.com/profile.php?id=61576531108313"
-        title="Visit our Facebook page"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Facebook"
-      >
-        <i class="fab fa-facebook-f"></i>
-        <span class="sr-only">Facebook</span>
-      </a>
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-cta">
+        <h2>Keep moving forward with us.</h2>
+        <p>Follow the runs, share the story, and back the science that could let people walk again.</p>
+        <a class="btn btn-primary" href="donate.html">Donate to the cause</a>
+      </div>
+      <div class="foot-social">
+        <p class="kicker">Find us</p>
+        <nav class="social" aria-label="Social media">
+          <a href="https://www.facebook.com/profile.php?id=61576531108313" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="mailto:runrickymovement@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/run4riccardo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.youtube.com/@Run4Ricky" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        </nav>
+      </div>
+    </div>
+    <div class="wrap foot-fine">
+      <p>&copy; 2025 Run4Ricky Foundation. Keep moving forward.</p>
+    </div>
+  </footer>
 
-      <!-- Email -->
-      <a
-        href="mailto:runrickymovement@gmail.com"
-        title="Send us an email"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Email"
-      >
-        <i class="fas fa-envelope"></i>
-        <span class="sr-only">Email</span>
-      </a>
-
-      <!-- Instagram -->
-      <a
-        href="https://www.instagram.com/run4riccardo/"
-        title="Follow us on Instagram"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-      >
-        <i class="fab fa-instagram"></i>
-        <span class="sr-only">Instagram</span>
-      </a>
-
-      <!-- YouTube -->
-      <a
-        href="https://www.youtube.com/@Run4Ricky"
-        title="Follow us on YouTube"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="YouTube"
-      >
-        <i class="fab fa-youtube"></i>
-        <span class="sr-only">YouTube</span>
-      </a>
-    </nav>
-    <p>&copy; 2025 Run4Ricky Foundation</p>
-  </section>
-</footer>
-
-
-<script type="module" src="script.js" defer></script>
-
-  
+  <script type="module" src="js/script.js" defer></script>
 </body>
 </html>
