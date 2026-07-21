@@ -674,3 +674,34 @@ p, .section-lead, .t-body, figcaption, .prose p { text-wrap: pretty; }
 
 /* small phones: keep the top bar uncrowded — social lives in the footer there */
 @media (max-width: 520px) { .nav-right .nav-ig { display: none; } }
+
+/* Only timeline images using the "natural" class */
+.timeline li .t-media.natural {
+  width: fit-content;
+  max-width: 100%;
+  background: transparent;
+}
+
+.timeline li .t-media.natural img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  padding: 0;
+}
+
+.timeline li .t-media.natural:hover img {
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .timeline li .t-media.natural {
+    width: 100%;
+  }
+
+  .timeline li .t-media.natural img {
+    width: 100%;
+  }
+}
